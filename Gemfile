@@ -58,3 +58,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
+
+gem 'devise'
