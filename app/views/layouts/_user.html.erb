@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-sm navbar-light">
+  <a class="navbar-brand" href="#"><%= image_tag 'ロゴ.jpg', size: "300x100" %></a>
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="Navber">
+    <ul class="navbar-nav ml-auto" style="max-height: 100px;">
+      <li>
+        <%= link_to do %>
+        <strong>タイムライン</strong><% end %>
+      </li>
+      <li>
+        <%= link_to do %>
+        <strong>全てのつぶやき</strong><% end %>
+      </li>
+      <li>
+        <%= link_to do %>
+        <strong>全てのユーザー</strong><% end %>
+      </li>
+      <li>
+        <%= link_to do %>
+        <strong>トップページ</strong><% end %>
+      </li>
+    </ul>
+  </div>
+</nav>

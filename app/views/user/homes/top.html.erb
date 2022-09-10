@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+       <div class="text-center"><%= image_tag 'ロゴ.jpg', size: "500x150" %></div>
+       <p  class="text-center">ideal selfはボディメイクを頑張る人々の為のSNSサイトです<i class="fas fa-users"></i></p>
+       <p class="text-center">呟き機能の他、体重と体脂肪率は記録を保存する機能がございます。</p>
+       <p class="text-center">同じように頑張っている仲間と励まし合ったり情報を得たりしながら</p>
+       <p class="text-center">楽しくモチベーションを維持して理想の自分を目指しましょう<i class="fas fa-gem"></i></p>
+       <div class="text-center">
+         <%= link_to "新規登録ページ", new_user_registration_path, class: "btn btn-outline-secondary m-4" %>
+         <%= link_to "ログインページ", new_user_session_path, class: "btn btn-outline-secondary m-4" %>
+       </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+  </div>
+</div>

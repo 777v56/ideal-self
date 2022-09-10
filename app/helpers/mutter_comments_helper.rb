@@ -1,0 +1,2 @@
+module MutterCommentsHelper
+end

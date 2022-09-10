@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>IdealSelf</title>
+    <title>ideal self</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/cccf4986d1.js" crossorigin="anonymous"></script>
   </head>
-
+  <header>
+    <% if admin_signed_in? %>
+      <%= render 'layouts/admin' %>
+    <% elsif user_signed_in? %>
+      <%= render 'layouts/user' %>
+    <% else %>
+      <%= render 'layouts/header' %>
+    <% end %>
+  </header>
   <body>
+    <main>
     <%= yield %>
+    </main>
   </body>
+  <footer>
+    <%= render 'layouts/footer' %>
+  </footer>
 </html>

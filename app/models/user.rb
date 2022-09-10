@@ -5,6 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_image
+
+  def get_profile_image
+    (profile_image.attached?) ? profile_image : 'ノーイメージ.jpg'
+  end
+
   has_many :mutters, dependent: :destroy
   has_many :records, dependent: :destroy
   has_many :comments, dependent: :destroy

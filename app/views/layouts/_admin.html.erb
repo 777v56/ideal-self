@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-sm navbar-light">
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="Navber">
+    <ul class="navbar-nav ml-auto" style="max-height: 100px;">
+      <li>
+        <%= link_to do %>
+        <strong>つぶやき</strong><% end %>
+      </li>
+      <li>
+        <%= link_to do %>
+        <strong>ユーザー</strong><% end %>
+      </li>
+      <li class="m-1">
+        <%= link_to destroy_admin_session_path,method: :delete,title:"logout" do %>
+        <i class="fas fa-sign-out-alt"></i><% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
