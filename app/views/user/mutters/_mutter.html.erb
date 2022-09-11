@@ -1,0 +1,11 @@
+<table class='table'>
+  <% mutters.each do |mutter| %>
+  <thead>
+    <td><%= image_tag user.get_profile_image, size: '30x30' %></td>
+    <td><%= user.name %></td>
+  </thead>
+  <tbody>
+    <td><%= mutter %></td>
+  </tbody>
+  <% end %>
+</table>

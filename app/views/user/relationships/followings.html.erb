@@ -1,2 +1,20 @@
-<h1>Relationships#followings</h1>
-<p>Find me in app/views/relationships/followings.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render 'user/users/left', user: @user %>
+    </div>
+    <div class="col-lg-6">
+      <h3><u>フォロー</u></h3>
+      <% if @users.count > 0 %>
+        <%= render 'user/users/list', users: @users %>
+      <% else %>
+        <p>誰もフォローしていません。</p>
+      <% end %>
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2">
+      <%= render 'user/users/right', user: @user %>
+    </div>
+  </div>
+  </div>
+</div>

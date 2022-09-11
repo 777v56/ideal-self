@@ -1,5 +1,11 @@
 class User::FavoritesController < ApplicationController
 
+  def show
+    @user = User.find(params[:id])
+    @users = @user.favorites
+    @mutters = Mutter.where(user_id:@users)
+  end
+
   def create
     mutter = Mutter.find(params[:mutter_id])
     favorite = current_user.favorites.new(mutter_id: mutter.id)
@@ -13,5 +19,7 @@ class User::FavoritesController < ApplicationController
     favorite.destroy
     redirect_to mutter_path(mutter)
   end
+
+  private
 
 end

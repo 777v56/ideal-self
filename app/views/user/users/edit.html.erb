@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render 'user/users/left', user: current_user %>
+    </div>
+    <div class="col-lg-6">
+      <%= link_to destroy_user_session_path,method: :delete,title:"logout" do %>
+      <i class="fas fa-sign-out-alt"></i><% end %>
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2">
+      <%= render 'user/users/right' %>
+    </div>
+  </div>
+  </div>
+</div>

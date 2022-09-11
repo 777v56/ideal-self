@@ -1,4 +1,4 @@
-class User::MutterCommentsController < ApplicationController
+class User::CommentsController < ApplicationController
 
  def create
    mutter = Mutter.find(params[:mutter_id])
@@ -11,7 +11,7 @@ class User::MutterCommentsController < ApplicationController
 
  private
 
- def post_comment_params
+ def comment_params
    params.require(:comment).permit(:comment)
  end
 

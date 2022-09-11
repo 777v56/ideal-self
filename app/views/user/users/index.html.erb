@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render 'user/users/left', user: current_user %>
+    </div>
+    <div class="col-lg-6">
+      <%= render 'user/users/list', users: @users %>
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2">
+      <%= render 'user/users/right' %>
+    </div>
+  </div>
+  </div>
+</div>

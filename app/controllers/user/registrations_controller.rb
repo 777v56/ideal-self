@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 class User::RegistrationsController < Devise::RegistrationsController
+  before_action :ensure_normal_user, only: :destroy
+
+  def ensure_normal_user
+    if resource.email == 'guest@example.com'
+      redirect_to mutters_path, alert: 'ゲストユーザーは削除できません。'
+    end
+  end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -60,9 +67,5 @@ class User::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  protected
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:gender,:birthday])
-  end
 end
