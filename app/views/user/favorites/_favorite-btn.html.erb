@@ -1,0 +1,9 @@
+<% if mutter.favorited_by?(current_user) %>
+  <%= link_to mutter_favorites_path(mutter), method: :delete, remote: true do %>
+  <i class="fas fa-heart"></i>
+  <%= mutter.favorites.count %><% end %>
+<% else %>
+  <%= link_to mutter_favorites_path(mutter), method: :post, remote: true do %>
+  <i class="far fa-heart"></i>
+  <%= mutter.favorites.count %><% end %>
+<% end %>

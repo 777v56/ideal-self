@@ -1,9 +1,23 @@
 <div class="row">
-  つぶやき投稿フォーム
+  <%= form_with model:@mutter,local:true do |f| %>
+  <div class="form-group">
+    <strong>投稿</strong>
+    <%= f.text_area :mutter, class: 'form-control', placeholder: "つぶやきの内容" %>
+  </div>
+  <div class="form-group">
+    <strong>画像</strong>
+    <%= f.file_field :mutter_image, accept: 'image/*' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit 'つぶやく', class: 'btn btn-sm btn-success' %>
+  </div>
+<% end %>
 </div>
-<div class="row">
-  キーワード検索
-</div>
-<div class="row">
-  ユーザー検索
+<div class="search_form">
+  <%= form_with url: search_path, local: true, method: :get do |f| %>
+  <%= f.text_field :word %>
+  <%= f.select :range, options_for_select([['User'], ['Mutter']]) %>
+  <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+  <%= f.submit "検索"%>
+  <% end %>
 </div>

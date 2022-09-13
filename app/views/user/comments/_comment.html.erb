@@ -1,0 +1,27 @@
+<div class="text-right actions">
+  <%= form_with model: [mutter,comment], local: false do |f| %>
+  <%= f.text_area :comment, class: 'form-control', placeholder: "コメントの内容"%>
+  <%= f.submit "送信", class: "btn btn-sm btn-success" %>
+  <% end %>
+</div>
+
+<table>
+  <% mutter.comments.each do |comment| %>
+  <tr>
+    <td>
+      <%= link_to(comment.user) do %>
+      <%= image_tag comment.user.get_profile_image, size:"40x40" %>
+      <%= comment.user.name %>
+      <% end %>
+    </td>
+    <td>
+      <%= comment.comment %>
+    </td>
+    <td>
+      <% if comment.user == current_user %>
+      <%= link_to "Destroy", mutter_comment_path(comment.mutter, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+      </td>
+      <% end %>
+  </tr>
+  <% end %>
+</table>

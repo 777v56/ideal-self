@@ -1,11 +1,30 @@
-<table class='table'>
-  <% mutters.each do |mutter| %>
-  <thead>
-    <td><%= image_tag user.get_profile_image, size: '30x30' %></td>
-    <td><%= user.name %></td>
-  </thead>
-  <tbody>
-    <td><%= mutter %></td>
-  </tbody>
-  <% end %>
+<% mutters.each do |mutter| %>
+<table class='table table-bordered table-sm my-4'>
+  <tr class="table-info">
+    <td class="pl-3">
+      <%= link_to user_path(mutter.user.id) do %>
+      <%= image_tag mutter.user.get_profile_image, size: '30x30' %>
+      <%= mutter.user.name %><% end %>
+      　　<% if mutter.user == current_user %>
+            <%= link_to edit_mutter_path(mutter), class: "btn btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-pen"></i><% end %>
+            <%= link_to mutter, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i><% end %>
+          <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td class="p-3">
+      <%= mutter.mutter %>
+    </td>
+   </tr>
+  <tr class="table-secondary text-right">
+    <td class=" pr-3" id="favorite-btn-<%= mutter.id %>">
+      <%= render 'user/favorites/favorite-btn', mutter: mutter %>
+      <%= link_to mutter_path(mutter.id), title:"コメントする" do %>
+      <i class="fas fa-comment-alt"></i>
+      <%= mutter.comments.count %>件<% end %>
+    </td>
+  </tr>
 </table>
+<% end %>

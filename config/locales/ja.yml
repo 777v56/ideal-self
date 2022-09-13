@@ -1,0 +1,7 @@
+ja:
+    enums:
+      user:
+        gender:
+          men: "男"
+          women: "女"
+          secret: "内緒"

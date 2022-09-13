@@ -1,35 +1,45 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
       <div class="mb-4">
         <h3><u><%= link_to "新規登録", root_path %></u></h3>
       </div>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "user/shared/error_messages", resource: resource %>
       <div class="form-group">
-        <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name", placeholder: "ユーザー名" %>
+        ユーザー名
+        <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name" %>
       </div>
       <div class="form-group">
-        <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+        メールアドレス
+        <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
       </div>
       <div class="form-group">
-        <%= f.text_field :birthday, class: "form-control", autofocus: true, autocomplete: "birthday", placeholder: "生年月日" %>
+        生年月日
+        <%= f.date_select :birthday, use_month_numbers: true, start_year: 1970, end_year: (Time.now.year - 10), default: Date.new(2000, 1, 1) %>
       </div>
       <div class="form-group">
-        性別　ラジオボタン付ける
+        性別
+        <%= f.radio_button :gender, "men" %>
+        <%= f.label :gender, "男" %>
+        <%= f.radio_button :gender, "women" %>
+        <%= f.label :gender, "女" %>
+        <%= f.radio_button :gender, "secret" %>
+        <%= f.label :gender, "内緒" %>
       </div>
       <div class="form-group">
-        <%= f.password_field :password, class: "form-control", autocomplete: "new-password", placeholder: "パスワード（6文字以上）" %>
+        パスワード
+        <%= f.password_field :password, class: "form-control", autocomplete: "new-password", placeholder: "6文字以上" %>
       </div>
       <div class="form-group">
-        <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password", placeholder: "パスワード（確認）" %>
+        <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password", placeholder: "確認" %>
       </div>
       <div class="text-right actions">
         <%= f.submit '登録する', class: 'btn-sm btn-primary' %>
       </div>
       <% end %>
     </div>
-    <div class="col-lg-3"></div>
+    <div class="col-lg-4"></div>
   </div>
 </div>

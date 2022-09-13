@@ -8,8 +8,11 @@
       <% if @users.count > 0 %>
         <%= render 'user/users/list', users: @users %>
       <% else %>
-        <%= link_to user_relationships_path(@user.id), method: :post, title:"フォロー追加" do %>
-        最初のフォロワーになる<i class="fas fa-user-plus"></i><% end %>
+        <% if @user == current_user %>
+        <% else %>
+          <%= link_to user_relationships_path(@user.id), method: :post, title:"フォロー追加" do %>
+          最初のフォロワーになる<i class="fas fa-user-plus"></i><% end %>
+        <% end %>
       <% end %>
     </div>
     <div class="col-lg-1"></div>

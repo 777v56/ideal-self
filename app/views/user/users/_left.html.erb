@@ -1,53 +1,52 @@
-<table class="table table-borderless">
-  <thead>
-    <%= image_tag user.get_profile_image, size:'150x150' %>
-  </thead>
-  <tbody>
+<table class="table table-borderless table-sm">
   <tr>
-    <th>ユーザー名：<%= user.name %>
-    <% if user.name != "guestuser" %>
-      <% if user == current_user %>
-        <%= link_to edit_user_path(current_user.id), title:"プロフィール編集" do %>
-	       <i class="fas fa-user-cog"></i><% end %>
-	    <% else %>
-	      <% if current_user.following?(user) %>
-          <%= link_to user_relationships_path(user.id), method: :delete, title:"フォロー解除" do %>
-          <i class="fas fa-user-minus"></i><% end %>
-        <% else %>
-          <%= link_to user_relationships_path(user.id), method: :post, title:"フォロー追加" do %>
-          <i class="fas fa-user-plus"></i><% end %>
+    <td class="text-center">
+      <%= image_tag user.get_profile_image, size:'150x150' %><br>
+      <strong>
+        <%= user.name %>
+        <% if user.name != "guestuser" %>
+          <% if user == current_user %>
+            <%= link_to edit_user_path(current_user.id), title:"プロフィール編集" do %>
+	          <i class="fas fa-user-cog"></i><% end %>
+	        <% else %>
+	          <% if current_user.following?(user) %>
+              <%= link_to user_relationships_path(user.id), method: :delete, title:"フォロー解除" do %>
+              <i class="fas fa-user-minus"></i><% end %>
+            <% else %>
+              <%= link_to user_relationships_path(user.id), method: :post, title:"フォロー追加" do %>
+              <i class="fas fa-user-plus"></i><% end %>
+            <% end %>
         <% end %>
-      <% end %>
-    </th>
+      </strong>
+    </td>
   </tr>
   <tr>
-    <th>年齢：
-      身長：<%= user.height %>
-      性別：<%= user.gender %>
-    </th>
+    <td class="small text-center">
+      <i class="fas fa-birthday-cake"></i><%= user.birthday.strftime('%Y/%m/%d') %>
+      　性別:<%= user.gender_i18n %>
+    　　身長:<%= user.height %>cm
+    </td>
   </tr>
   <tr>
-    <th>自己紹介：</th>
-  </tr>
-  <tr>
-    <td><%= user.introduction %></td>
-  </tr>
-  <tr>
-    <th>
-      <%= link_to "記録", record_path(user.id) %>
-      <%= link_to "いいね", favorite_path(user.id) %>
-    </th>
-  </tr>
-  <tr>
-    <th>
+    <td class="small text-center">
       フォロー
       <%= link_to user_followings_path(user.id) do %>
       <%= user.followings.count %><% end %>
       フォロワー
       <%= link_to user_followers_path(user.id) do %>
       <%= user.followers.count %><% end %>
-    <% end %>
-    </th>
+    </td>
   </tr>
-  </tbody>
+  <tr>
+    <td class="text-center">
+      <%= link_to "記録を見る", record_path(user.id), class: "btn-sm btn-outline-secondary"  %>
+      <%= link_to "いいねした呟き", favorite_path(user.id), class: "btn-sm btn-outline-secondary" %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= user.introduction %>
+    </td>
+  </tr>
 </table>

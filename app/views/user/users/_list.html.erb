@@ -1,18 +1,17 @@
-<table class='table table-hover'>
-  <thead>
-    <tr>
-      <th></th>
-      <th>ユーザー名</th>
-      <th>自己紹介</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% users.each do |user| %>
-    <tr>
-      <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
-      <td><%= link_to user_path(user.id) do %><%= user.name %><% end %></td>
-      <td><%= user.introduction %></td>
-    </tr>
-    <% end %>
-  </tbody>
+<% users.each do |user| %>
+<table class='table table-borderless table-sm my-3'>
+  <tr>
+    <td>
+      <%= link_to user_path(user.id) do %>
+      <%= image_tag user.get_profile_image, size: '30x30' %>
+      　　<%= user.name %><% end %>
+      　　<% if current_user.following?(user) %>
+            <button type="button" class="btn-sm btn-outline-warning rounded-pill" disabled>フォロー中</button>
+          <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td class="small"><%= user.introduction %></td>
+  </tr>
 </table>
+<% end %>

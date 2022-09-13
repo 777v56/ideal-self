@@ -10,6 +10,7 @@ class User::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @users = User.all
+    @mutter = Mutter.new
     @mutters = @user.mutters
   end
 
@@ -20,6 +21,9 @@ class User::UsersController < ApplicationController
     else
       render edit_user_path(current_user.id)
     end
+  end
+
+  def edit
   end
 
   private

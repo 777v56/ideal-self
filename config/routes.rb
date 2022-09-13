@@ -14,12 +14,14 @@ Rails.application.routes.draw do
 
  namespace :admin do
   root to: "homes#top"
-   resources :users, only: [:index,:show,:edit,:update]
-   resources :mutters, only: [:index,:show,:update]
+  get "search" => "searches#search"
+  resources :users, only: [:index,:show,:edit,:update]
+  resources :mutters, only: [:index,:show,:update]
  end
 
  scope module: :user do
   root to: "homes#top"
+  get "search" => "searches#search"
   get "mutters/timeline"
   resources :records, only: [:show,:edit,:create,:destroy,:update]
   resources :mutters, only: [:index,:show,:edit,:create,:destroy,:update] do

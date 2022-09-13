@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render 'user/users/left', user: current_user %>
+    </div>
+    <div class="col-lg-5">
+      <% if @range == "User" %>
+        <h2>Users search for"<%= @word %>"</h2>
+        <%= render 'user/users/list', users: @users %>
+      <% else %>
+        <h2>"<%= @word %>"を含むつぶやき</h2>
+        <%= render 'user/mutters/mutter', mutters: @mutters, users: @users, comment: @comment %>
+      <% end %>
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-3">
+      <%= render 'user/users/right' %>
+    </div>
+  </div>
+  </div>
+</div>

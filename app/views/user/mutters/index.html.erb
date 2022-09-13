@@ -3,11 +3,11 @@
     <div class="col-lg-3">
       <%= render 'user/users/left', user: current_user %>
     </div>
-    <div class="col-lg-6">
-      <%= render 'user/mutters/mutter', mutters: @mutters %>
+    <div class="col-lg-5">
+      <%= render 'user/mutters/mutter', mutters: @mutters, users: @users, comment: @comment %>
     </div>
     <div class="col-lg-1"></div>
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <%= render 'user/users/right' %>
     </div>
   </div>

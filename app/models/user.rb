@@ -13,6 +13,8 @@ class User < ApplicationRecord
     end
   end
 
+  enum gender: { men: 0, women: 1, secret: 2 }
+
   has_one_attached :profile_image
 
   def get_profile_image
@@ -43,6 +45,21 @@ class User < ApplicationRecord
   # フォローしているか判定
   def following?(user)
     followings.include?(user)
+  end
+
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @user = User.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @user = User.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?","%#{word}%")
+    else
+      @user = User.all
+    end
   end
 
 end
