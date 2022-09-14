@@ -29,23 +29,21 @@
   </tr>
   <tr>
     <td class="small text-center">
-      フォロー
       <%= link_to user_followings_path(user.id) do %>
-      <%= user.followings.count %><% end %>
-      フォロワー
+      フォロー<%= user.followings.count %><% end %>
       <%= link_to user_followers_path(user.id) do %>
-      <%= user.followers.count %><% end %>
+      フォロワー<%= user.followers.count %><% end %>
     </td>
   </tr>
   <tr>
     <td class="text-center">
       <%= link_to "記録を見る", record_path(user.id), class: "btn-sm btn-outline-secondary"  %>
-      <%= link_to "いいねした呟き", favorite_path(user.id), class: "btn-sm btn-outline-secondary" %>
+      <%= link_to "いいね", favorite_path(user.id), class: "btn-sm btn-outline-secondary" %>
       <% end %>
     </td>
   </tr>
   <tr>
-    <td>
+    <td class="text-center">
       <%= user.introduction %>
     </td>
   </tr>

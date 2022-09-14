@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-white">
-  <%= image_tag 'ロゴ.jpg', size: "300x100" %>
+  <%= link_to user_path(current_user.id),title:"自分のページに戻る" do %>
+  <%= image_tag 'ロゴ.jpg', size: "300x100" %><% end %>
   <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -17,12 +18,8 @@
         <%= link_to users_path do %>
         <strong>全てのユーザー<i class="fas fa-users"></i></strong><% end %>
       </li>
-      <li class="px-3">
-        <%= link_to user_path(current_user.id) do %>
-        <strong>トップページ<i class="fas fa-home"></i></strong><% end %>
-      </li>
-      <li class="px-3">
-        <%= link_to destroy_user_session_path,method: :delete,title:"logout" do %>
+        <li class="px-3">
+        <%= link_to destroy_user_session_path,method: :delete,title:"ログアウト" do %>
         <i class="fas fa-sign-out-alt"></i><% end %>
       </li>
     </ul>

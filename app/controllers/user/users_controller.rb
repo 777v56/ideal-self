@@ -4,14 +4,14 @@ class User::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
 
   def index
-    @users = User.all
+    @users = User.all.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def show
     @user = User.find(params[:id])
     @users = User.all
     @mutter = Mutter.new
-    @mutters = @user.mutters
+    @mutters = @user.mutters.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def update
@@ -24,6 +24,7 @@ class User::UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   private

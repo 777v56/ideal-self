@@ -13,10 +13,9 @@ Rails.application.routes.draw do
  end
 
  namespace :admin do
-  root to: "homes#top"
+  root to: "mutters#index"
   get "search" => "searches#search"
-  resources :users, only: [:index,:show,:edit,:update]
-  resources :mutters, only: [:index,:show,:update]
+  resources :mutters, only: [:index,:destroy]
  end
 
  scope module: :user do

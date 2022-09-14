@@ -4,7 +4,9 @@
       <%= render 'user/users/left', user: current_user %>
     </div>
     <div class="col-lg-5">
+      <h4><u><strong>全てのユーザー</strong></u></h4>
       <%= render 'user/users/list', users: @users %>
+      <div class="mx-auto" style="width: 200px;"><%= paginate @users %></div>
     </div>
     <div class="col-lg-1"></div>
     <div class="col-lg-3">

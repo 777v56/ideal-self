@@ -5,25 +5,47 @@
       <%= link_to user_path(mutter.user.id) do %>
       <%= image_tag mutter.user.get_profile_image, size: '30x30' %>
       <%= mutter.user.name %><% end %>
-      　　<% if mutter.user == current_user %>
-            <%= link_to edit_mutter_path(mutter), class: "btn btn-sm btn-outline-secondary" do %>
-            <i class="fas fa-pen"></i><% end %>
-            <%= link_to mutter, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" do %>
-            <i class="fas fa-trash-alt"></i><% end %>
+        <% if mutter.user == current_user %>
+        <% else %>
+          <% if current_user.following?(mutter.user) %>
+          <% else %>
+            <%= link_to user_relationships_path(mutter.user.id), method: :post, title:"フォロー追加" do %>
+            <i class="fas fa-user-plus"></i><% end %>
           <% end %>
+        <% end %>
     </td>
   </tr>
   <tr>
     <td class="p-3">
-      <%= mutter.mutter %>
+      <strong><%= mutter.mutter %></strong><br>
+      <p class="text-center">
+      <% if mutter.mutter_image.attached? %>
+        <%= image_tag mutter.mutter_image, size: '200x200' %>
+      <% end %>
+      </p>
+      <p class="text-right"><%= mutter.created_at.strftime("%Y/%m/%d %H:%M") %></p>
     </td>
    </tr>
-  <tr class="table-secondary text-right">
-    <td class=" pr-3" id="favorite-btn-<%= mutter.id %>">
-      <%= render 'user/favorites/favorite-btn', mutter: mutter %>
-      <%= link_to mutter_path(mutter.id), title:"コメントする" do %>
-      <i class="fas fa-comment-alt"></i>
-      <%= mutter.comments.count %>件<% end %>
+  <tr class="table-secondary">
+    <td style="display: flex;">
+      <p class="pr-3" id="favorite-btn-<%= mutter.id %>">
+        <%= render 'user/favorites/favorite-btn', mutter: mutter %>
+      </p>
+      <p class="pr-3">
+        <%= link_to mutter_path(mutter.id), title:"コメントする" do %>
+        <i class="fas fa-comment-alt"></i>
+        <%= mutter.comments.count %><% end %>
+      </p>
+      <% if mutter.user == current_user %>
+        <%= link_to edit_mutter_path(mutter), title:"編集する" do %>
+        <p class="pr-3">
+        <i class="fas fa-pen"></i><% end %>
+        </p>
+        <p>
+        <%= link_to mutter, method: :delete, data: { confirm: '本当に削除しますか？' }, title:"削除する" do %>
+        <i class="fas fa-trash-alt"></i><% end %>
+        </p>
+      <% end %>
     </td>
   </tr>
 </table>

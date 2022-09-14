@@ -3,7 +3,7 @@
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
       <div class="mb-4">
-        <h3><u><%= link_to "新規登録", root_path %></u></h3>
+        <h4><u><strong><%= link_to "新規登録", root_path %></strong></u></h4>
       </div>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "user/shared/error_messages", resource: resource %>

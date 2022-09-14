@@ -3,7 +3,7 @@ class User::SearchesController < ApplicationController
     @range = params[:range]
     @word = params[:word]
 
-    if @range == "User"
+    if @range == "ユーザー名"
       @users = User.looks(params[:search], params[:word])
     else
       @mutters = Mutter.looks(params[:search], params[:word])

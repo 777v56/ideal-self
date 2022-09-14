@@ -1,5 +1,7 @@
 class Mutter < ApplicationRecord
+
   has_one_attached :mutter_image
+
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -12,10 +14,6 @@ class Mutter < ApplicationRecord
   def self.looks(search, word)
     if search == "perfect_match"
       @mutter = Mutter.where("mutter LIKE?","#{word}")
-    elsif search == "forward_match"
-      @mutter = Mutter.where("mutter LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @mutter = Mutter.where("mutter LIKE?","%#{word}")
     elsif search == "partial_match"
       @mutter = Mutter.where("mutter LIKE?","%#{word}%")
     else

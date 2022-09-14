@@ -4,9 +4,10 @@
       <%= render 'user/users/left', user: @user %>
     </div>
     <div class="col-lg-5">
+      <h4><u><strong>投稿の編集</strong></u></h4>
       <%= form_with model:@mutter,local:true do |f| %>
       <div class="form-group">
-        <strong>投稿</strong>
+        <strong>投稿内容</strong>
         <%= f.text_area :mutter, class: 'form-control' %>
       </div>
       <div class="form-group">

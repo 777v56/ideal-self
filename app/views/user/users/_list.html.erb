@@ -6,7 +6,7 @@
       <%= image_tag user.get_profile_image, size: '30x30' %>
       　　<%= user.name %><% end %>
       　　<% if current_user.following?(user) %>
-            <button type="button" class="btn-sm btn-outline-warning rounded-pill" disabled>フォロー中</button>
+            <button type="button" class="btn-sm btn-outline-success rounded-pill" disabled>フォロー中</button>
           <% end %>
     </td>
   </tr>

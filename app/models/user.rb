@@ -26,6 +26,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :records, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  # 一覧画面で使う
+  has_many :favorited_mutters, through: :favorites, source: :mutter
 
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -51,10 +53,6 @@ class User < ApplicationRecord
   def self.looks(search, word)
     if search == "perfect_match"
       @user = User.where("name LIKE?", "#{word}")
-    elsif search == "forward_match"
-      @user = User.where("name LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @user = User.where("name LIKE?","%#{word}")
     elsif search == "partial_match"
       @user = User.where("name LIKE?","%#{word}%")
     else

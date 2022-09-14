@@ -4,6 +4,7 @@
       <%= render 'user/users/left', user: current_user %>
     </div>
     <div class="col-lg-5">
+      <h4><u><strong>プロフィール編集</strong></u></h4>
       <%= form_with model:@user, local:true do |f| %>
       <div class="form-group">
         <%= f.label :ユーザー名 %>

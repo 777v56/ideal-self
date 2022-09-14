@@ -1,20 +1,24 @@
-<nav class="navbar navbar-expand-sm navbar-light">
+<nav class="navbar navbar-expand-sm navbar-light bg-white">
   <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="Navber">
     <ul class="navbar-nav ml-auto" style="max-height: 100px;">
-      <li>
-        <%= link_to do %>
-        <strong>つぶやき</strong><% end %>
+      <div class="center search_form">
+        <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
+        <%= f.text_field :word, class: 'form-control', col: 'auto', placeholder: "キーワードを入力" %>
+        <%= f.select :range, options_for_select([['つぶやき'], ['コメント']]) %>
+        <%= f.select :search, options_for_select([["部分一致","partial_match"], ["完全一致","perfect_match"]]) %>
+        <%= f.submit "検索", class: 'btn btn-sm btn-secondary' %>
+        <% end %>
+      </div>
+      <li class="px-3">
+        <%= link_to admin_root_path do %>
+        <strong>全てのつぶやき<i class="fa-solid fa-comment"></i></strong><% end %>
       </li>
-      <li>
-        <%= link_to do %>
-        <strong>ユーザー</strong><% end %>
-      </li>
-      <li class="m-1">
-        <%= link_to destroy_admin_session_path,method: :delete,title:"logout" do %>
-        <i class="fas fa-sign-out-alt"></i><% end %>
+      <li class="px-3">
+      <%= link_to destroy_admin_session_path,method: :delete,title:"ログアウト" do %>
+      <i class="fas fa-sign-out-alt"></i><% end %>
       </li>
     </ul>
   </div>

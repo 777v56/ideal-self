@@ -21,7 +21,14 @@
           </td>
         </tr>
       </table>
-      <div id="comments-area"><%= render "user/comments/comment",mutter: @mutter,comment: @comment %></div>
+      <div id="comments-area">
+        <div class="text-right actions">
+          <%= form_with model: [@mutter,@comment], local: false do |f| %>
+          <%= f.text_area :comment, class: 'form-control', placeholder: "コメントの内容"%>
+          <%= f.submit "送信", class: "btn btn-sm btn-success" %>
+        <% end %>
+        </div>
+        <%= render "user/comments/comment",mutter: @mutter,comment: @comment %></div>
     </div>
     <div class="col-lg-1"></div>
     <div class="col-lg-3">
