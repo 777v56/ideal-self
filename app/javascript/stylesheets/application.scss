@@ -1,2 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.side-position {
+ position: fixed;
+ top: 120px;
+}
+
+.pagination {
+  justify-content: center;
+}

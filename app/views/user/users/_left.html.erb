@@ -1,50 +1,47 @@
-<table class="table table-borderless table-sm">
-  <tr>
-    <td class="text-center">
-      <%= image_tag user.get_profile_image, size:'150x150' %><br>
+<div class="side-position">
+  <div class="border-top border-left border-right rounded-top p-3 w-100">
+    <p class="text-center">
+      <%= image_tag user.get_profile_image, class: "rounded", width:'220' %><br>
       <strong>
         <%= user.name %>
         <% if user.name != "guestuser" %>
           <% if user == current_user %>
             <%= link_to edit_user_path(current_user.id), title:"プロフィール編集" do %>
-	          <i class="fas fa-user-cog"></i><% end %>
+              <i class="fas fa-user-cog"></i>
+            <% end %>
 	        <% else %>
 	          <% if current_user.following?(user) %>
               <%= link_to user_relationships_path(user.id), method: :delete, title:"フォロー解除" do %>
-              <i class="fas fa-user-minus"></i><% end %>
+                <i class="fas fa-user-minus"></i>
+              <% end %>
             <% else %>
               <%= link_to user_relationships_path(user.id), method: :post, title:"フォロー追加" do %>
-              <i class="fas fa-user-plus"></i><% end %>
+                <i class="fas fa-user-plus"></i>
+              <% end %>
             <% end %>
+          <% end %>
         <% end %>
       </strong>
-    </td>
-  </tr>
-  <tr>
-    <td class="small text-center">
-      <i class="fas fa-birthday-cake"></i><%= user.birthday.strftime('%Y/%m/%d') %>
-      　性別:<%= user.gender_i18n %>
-    　　身長:<%= user.height %>cm
-    </td>
-  </tr>
-  <tr>
-    <td class="small text-center">
-      <%= link_to user_followings_path(user.id) do %>
-      フォロー<%= user.followings.count %><% end %>
-      <%= link_to user_followers_path(user.id) do %>
-      フォロワー<%= user.followers.count %><% end %>
-    </td>
-  </tr>
-  <tr>
-    <td class="text-center">
-      <%= link_to "記録を見る", record_path(user.id), class: "btn-sm btn-outline-secondary"  %>
-      <%= link_to "いいね", favorite_path(user.id), class: "btn-sm btn-outline-secondary" %>
+    </p>
+    <p class="small text-center">
+      <% if user.name != "guestuser" %>
+        <i class="fas fa-birthday-cake"></i>
+        <%= user.birthday.strftime('%Y/%m/%d') %>
+        　性別：<%= user.gender_i18n %>
+        身長：<%= user.height %>cm<br>
+        <%= link_to user_followings_path(user.id), class: "btn-sm btn-outline-secondary" do %>
+          フォロー<%= user.followings.count %>
+        <% end %>
+        <%= link_to user_followers_path(user.id), class: "btn-sm btn-outline-secondary" do %>
+          フォロワー<%= user.followers.count %>
+        <% end %><br>
+        <%= link_to "記録を見る", record_path(user.id) %>
+        <%= link_to "いいね", favorite_path(user.id) %>
       <% end %>
-    </td>
-  </tr>
-  <tr>
-    <td class="text-center">
+  </div>
+  <div class="border-bottom border-left border-right rounded-bottom p-2 w-100">
+    <p class="text-center">
       <%= user.introduction %>
-    </td>
-  </tr>
-</table>
+    </p>
+  </div>
+</div>

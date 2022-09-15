@@ -1,1 +1,2 @@
 $("#comments-area").html("<%= j(render 'user/comments/comment', mutter: @mutter,comment: @comment) %>")
+$("#comment_count").html("<%= j(render 'user/comments/count', mutter: @mutter) %>")

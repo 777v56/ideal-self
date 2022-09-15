@@ -10,7 +10,6 @@ class User::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @users = User.all
-    @mutter = Mutter.new
     @mutters = @user.mutters.order("created_at DESC").page(params[:page]).per(10)
   end
 
@@ -18,8 +17,10 @@ class User::UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       redirect_to user_path(@user.id), notice: "You have updated user successfully."
+      flash[:notice] = "更新しました"
     else
       render edit_user_path(current_user.id)
+      flash[:alert] = "更新に失敗しました"
     end
   end
 

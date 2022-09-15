@@ -3,7 +3,7 @@
     <div class="col-lg-3">
       <%= render 'user/users/left', user: current_user %>
     </div>
-    <div class="col-lg-5">
+    <div class="col-lg-6 px-5">
       <% if @range == "ユーザー名" %>
         <h4><u><strong>「<%= @word %>」を含むユーザーの一覧</strong></u></h4>
         <%= render 'user/users/list', users: @users %>
@@ -12,7 +12,6 @@
         <%= render 'user/mutters/mutter', mutters: @mutters, users: @users %>
       <% end %>
     </div>
-    <div class="col-lg-1"></div>
     <div class="col-lg-3">
       <%= render 'user/users/right' %>
     </div>

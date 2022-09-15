@@ -3,7 +3,7 @@
     <div class="col-lg-3">
       <%= render 'user/users/left', user: @user %>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 px-5">
       <h4><u><strong><%= @user.name %>をフォローしているユーザー</strong></u></h4>
       <% if @users.count > 0 %>
         <%= render 'user/users/list', users: @users %>
@@ -14,12 +14,10 @@
           最初のフォロワーになる<i class="fas fa-user-plus"></i><% end %>
         <% end %>
       <% end %>
-      <div class="mx-auto" style="width: 200px;"><%= paginate @users %></div>
+      <%= paginate @users, theme: 'twitter-bootstrap-4' %>
     </div>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <%= render 'user/users/right', user: @user %>
     </div>
-  </div>
   </div>
 </div>

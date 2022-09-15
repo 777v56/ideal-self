@@ -1,20 +1,37 @@
-<table>
-  <% mutter.comments.each do |comment| %>
-  <tr>
-    <td>
-      <%= link_to(comment.user) do %>
-      <%= image_tag comment.user.get_profile_image, size:"40x40" %>
+<% mutter.comments.each do |comment| %>
+
+  <!--コメント主情報-->
+  <div style="background-color:#e0ffff;" class="border-top border-left border-right rounded-top mt-4 p-2">
+    <%= link_to(comment.user) do %>
+      <%= image_tag comment.user.get_profile_image, class: "rounded-circle mr-2", size:"35x35" %>
       <%= comment.user.name %>
+    <% end %>
+    <% if comment.user == current_user %>
+    <% else %>
+      <% if current_user.following?(mutter.user) %>
+      <% else %>
+        <%= link_to user_relationships_path(mutter.user.id), method: :post, title:"フォロー追加" do %>
+          <i class="fas fa-user-plus"></i>
+        <% end %>
       <% end %>
-    </td>
-    <td>
-      <%= comment.comment %>
-    </td>
-    <td>
+    <% end %>
+  </div>
+
+  <!--コメント内容・削除-->
+  <div class="border-bottom border-left border-right rounded-bottom p-3 mb-4">
+    <strong><%= comment.comment %></strong><br>
+    <p class="text-center">
+      <% if comment.comment_image.attached? %>
+        <%= image_tag comment.comment_image, size: '200x200' %>
+      <% end %>
+    </p>
+    <p class="text-right">
+      <%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
       <% if comment.user == current_user %>
-      <%= link_to "Destroy", mutter_comment_path(comment.mutter, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
-      </td>
+        <%= link_to mutter_comment_path(comment.mutter, comment), method: :delete, remote: true, data: { confirm: '本当に削除しますか？' }, title:"削除する", class:"ml-2" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
       <% end %>
-  </tr>
-  <% end %>
-</table>
+    </p>
+  </div>
+<% end %>

@@ -3,7 +3,7 @@
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
       <%= render 'admin/mutters/mutter', mutters: @mutters, users: @users %>
-      <div class="mx-auto" style="width: 200px;"><%= paginate @mutters %></div>
+      <%= paginate @mutters, theme: 'twitter-bootstrap-4' %>
     </div>
     <div class="col-lg-3"></div>
   </div>

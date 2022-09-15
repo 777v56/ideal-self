@@ -13,12 +13,13 @@ class User::CommentsController < ApplicationController
   @mutter = Mutter.find(params[:mutter_id])
   @comment = Comment.new
   Comment.find(params[:id]).destroy
+
  end
 
  private
 
  def comment_params
-  params.require(:comment).permit(:comment)
+  params.require(:comment).permit(:comment, :comment_image)
  end
 
 end
