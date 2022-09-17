@@ -3,17 +3,16 @@
     <div class="col-lg-3">
       <%= render 'user/users/left', user: @user %>
     </div>
-    <div class="col-lg-5">
+    <div class="col-lg-6 px-5">
       <h4><u><strong>投稿の編集</strong></u></h4>
-      <%= form_with model: @mutter,local:true do |f| %>
+      <%= form_with model:@mutter,local:true do |f| %>
       <div class="form-group text-right">
         <%= f.text_area :mutter, class: 'form-control', rows: '5' %>
         <%= f.file_field :mutter_image, accept: 'image/*' %>
-        <%= f.submit 'つぶやく', class: 'btn btn-sm btn-success' %>
+        <%= f.submit '更新する', class: 'btn btn-sm btn-success' %>
       </div>
       <% end %>
     </div>
-    <div class="col-lg-1"></div>
     <div class="col-lg-3">
       <%= render 'user/users/right', user: @user %>
     </div>

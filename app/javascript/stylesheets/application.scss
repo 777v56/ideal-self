@@ -9,3 +9,26 @@
 .pagination {
   justify-content: center;
 }
+
+.link {
+  text-decoration: none;
+  color: #696969;
+}
+
+.bottom {
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: right;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  text-align: center;
+}
+
+@media (max-width: 1115px) {
+	.side-position {
+	  position: static;
+	}
+}

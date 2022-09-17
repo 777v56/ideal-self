@@ -3,12 +3,35 @@
     <div class="col-lg-3">
       <%= render 'user/users/left', user: @user %>
     </div>
-    <div class="col-lg-6">
-      グラフ・フォーム・一覧・ページネーション
+    <div class="col-lg-6 px-5">
+      <h4><u><strong><%= @user.name %>の記録</strong></u></h4>
+      <!--グラフ-->
+      <%= render 'user/records/graph', user: @user, records: @records %>
+      <!--投稿フォーム-->
+      <% if @user == current_user %>
+        <div class="form-group p-5">
+          <%= form_with model: @record,local:true do |f| %>
+            <%= f.date_select :input_date, use_month_numbers: true %><br>
+            <%= f.text_field :weight, placeholder: "体重を入力" %>kg<br>
+            <%= f.text_field :fat, placeholder: "体脂肪率を入力" %>%
+            <p class="text-right">
+              <%= f.submit '記録する', class: 'btn btn-sm btn-danger' %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+      <!--記録の一覧-->
+      <%= render 'user/records/record', user: @user, records: @records %>
+      <p class="text-center">
+        <strong>
+          <%= link_to "前月",record_path(month:@month.prev_month), class:"link mr-3" %>
+          <%= link_to "今月",record_path(@user.id), class:"link mr-3" %>
+          <%= link_to "次月",record_path(month:@month.next_month), class:"link" %>
+        </strong>
+      </p>
     </div>
     <div class="col-lg-3">
       <%= render 'user/users/right', user: @user %>
     </div>
-  </div>
   </div>
 </div>

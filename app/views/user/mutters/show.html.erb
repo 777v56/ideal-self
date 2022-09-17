@@ -4,63 +4,56 @@
       <%= render 'user/users/left', user: @user %>
     </div>
     <div class="col-lg-6 px-5 pb-5">
-
-      <!--投稿主情報-->
-      <div style="background-color:#fff0f5;" class="border-top border-left border-right rounded-top mt-4 p-2">
-        <%= link_to user_path(@mutter.user.id) do %>
-          <%= image_tag @mutter.user.get_profile_image, class: "rounded-circle", size: '35x35' %>
-          <%= @mutter.user.name %>
-        <% end %>
-        <% if @mutter.user == current_user %>
-          <% else %>
-          <% if current_user.following?(@mutter.user) %>
-          <% else %>
-            <%= link_to user_relationships_path(@mutter.user.id), method: :post, title:"フォロー追加" do %>
-              <i class="fas fa-user-plus"></i>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-
-      <!--投稿内容-->
-      <div class="border-left border-right p-3">
-        <strong><%= @mutter.mutter %></strong><br>
-        <p class="text-center">
-          <% if @mutter.mutter_image.attached? %>
-            <%= image_tag @mutter.mutter_image, class: "rounded", height: '200' %>
-          <% end %>
-        </p>
-        <p class="text-right">
-          <%= @mutter.created_at.strftime("%Y/%m/%d %H:%M") %>
-        </p>
-      </div>
-
-      <!--いいね・コメント-->
-      <div style="display: flex; background-color:#f5f5f5;" class="border-bottom border-left border-right rounded-bottom mb-4 pt-1 pl-3">
-        <p class="pr-3" id="favorite-btn-<%= @mutter.id %>">
-          <%= render 'user/favorites/favorite-btn', mutter: @mutter %>
-        </p>
-        <%= link_to mutter_path(@mutter.id), title:"コメントする" do %>
-          <i class="fas fa-comment-alt"></i>
-          <span id="comment_count">
-            <%= render 'user/comments/count', mutter: @mutter %>
-          </span>
-        <% end %>
-      </div>
-
-      <!--コメント機能-->
-      <div id="comments-area">
-        <div class="text-right actions">
-          <%= form_with model: [@mutter,@comment], local: false do |f| %>
-            <%= f.text_area :comment, class: 'form-control', placeholder: "コメントの内容"%>
-            <%= f.file_field :comment_image, accept: 'image/*' %>
-            <%= f.submit "送信", class: "btn btn-sm btn-success" %>
+      <div class="mutter-box">
+        <!--投稿主情報-->
+        <div style="background-color:#fff0f5;" class="border-top border-left border-right rounded-top mt-4 p-2">
+          <%= link_to user_path(@mutter.user.id), class:"link" do %>
+            <%= image_tag @mutter.user.get_profile_image, class: "rounded-circle", size: '35x35' %>
+            <%= @mutter.user.name %>
           <% end %>
         </div>
-        <%= render "user/comments/comment",mutter: @mutter,comment: @comment %>
+
+        <!--投稿内容-->
+        <div class="border-left border-right p-3">
+          <strong><%= @mutter.mutter %></strong><br>
+          <p class="text-center">
+            <% if @mutter.mutter_image.attached? %>
+              <%= image_tag @mutter.mutter_image, class: "rounded", height: '200' %>
+            <% end %>
+          </p>
+          <p class="text-right">
+            <%= @mutter.created_at.strftime("%Y/%m/%d %H:%M") %>
+          </p>
+        </div>
+
+        <!--いいね・コメント-->
+        <div class="bottom border-bottom border-left border-right rounded-bottom pt-1 pr-1 mb-5">
+          <p class="pr-3" id="favorite-btn-<%= @mutter.id %>">
+            <%= render 'user/favorites/favorite-btn', mutter: @mutter %>
+          </p>
+          <p class="pr-3">
+            <%= link_to mutter_path(@mutter.id), class:"link", title:"コメントする" do %>
+              <i class="fas fa-comment-alt"></i>
+              <span id="comment_count">
+                <%= render 'user/comments/count', mutter: @mutter %>
+              </span>
+            <% end %>
+          </p>
+        </div>
+
+        <!--コメント機能-->
+        <div id="comments-area">
+          <div class="text-right actions">
+            <%= form_with model: [@mutter,@comment], local: false do |f| %>
+              <%= f.text_area :comment, class: 'form-control', placeholder: "コメントの内容"%>
+              <%= f.file_field :comment_image, accept: 'image/*' %>
+              <%= f.submit "送信", class: "btn btn-sm btn-success" %>
+            <% end %>
+          </div>
+          <%= render "user/comments/comment",mutter: @mutter,comment: @comment %>
+        </div>
       </div>
     </div>
-
     <div class="col-lg-3">
       <%= render 'user/users/right', user: @user %>
     </div>

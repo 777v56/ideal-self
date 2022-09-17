@@ -16,8 +16,7 @@ class User::FavoritesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @mutter = Mutter.new
-    @mutters = @user.favorited_mutters.all.order("created_at DESC").page(params[:page]).per(10)
+    @mutters = @user.favorited_mutters.order("created_at DESC").page(params[:page]).per(10)
   end
 
   private

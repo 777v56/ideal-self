@@ -42,7 +42,7 @@ class User::MuttersController < ApplicationController
  def update
   @mutter = Mutter.find(params[:id])
   @mutter.user_id = current_user.id # user_idの情報はフォームからはきていないので、deviseのメソッドを使って「ログインしている自分のid」を代入
-  @mutter.save
+  @mutter.update(mutter_params)
   flash[:notice] = "更新しました"
   redirect_to user_path(current_user.id)
  end

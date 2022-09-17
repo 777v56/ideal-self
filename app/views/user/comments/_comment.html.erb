@@ -6,16 +6,7 @@
       <%= image_tag comment.user.get_profile_image, class: "rounded-circle mr-2", size:"35x35" %>
       <%= comment.user.name %>
     <% end %>
-    <% if comment.user == current_user %>
-    <% else %>
-      <% if current_user.following?(mutter.user) %>
-      <% else %>
-        <%= link_to user_relationships_path(mutter.user.id), method: :post, title:"フォロー追加" do %>
-          <i class="fas fa-user-plus"></i>
-        <% end %>
-      <% end %>
-    <% end %>
-  </div>
+   </div>
 
   <!--コメント内容・削除-->
   <div class="border-bottom border-left border-right rounded-bottom p-3 mb-4">
@@ -28,7 +19,7 @@
     <p class="text-right">
       <%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
       <% if comment.user == current_user %>
-        <%= link_to mutter_comment_path(comment.mutter, comment), method: :delete, remote: true, data: { confirm: '本当に削除しますか？' }, title:"削除する", class:"ml-2" do %>
+        <%= link_to mutter_comment_path(comment.mutter, comment), class:"link ml-2", method: :delete, remote: true, data: { confirm: '本当に削除しますか？' }, title:"削除する" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       <% end %>

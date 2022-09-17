@@ -1,5 +1,6 @@
 class Mutter < ApplicationRecord
-  validates :mutter, presence: true
+
+  validates :mutter, presence: true, Length: { maximum: 200 }
 
   has_one_attached :mutter_image
 

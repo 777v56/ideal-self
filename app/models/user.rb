@@ -4,12 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :introduction, Length: { maximum: 100 }
+  validates :name, presence: true, uniqueness: true, Length: { maximum: 15 }
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
       user.birthday = "20000101"
-      user.gender = "不明"
     end
   end
 
@@ -25,6 +27,7 @@ class User < ApplicationRecord
   has_many :records, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :records, dependent: :destroy
+
   has_many :favorites, dependent: :destroy
   # 一覧画面で使う
   has_many :favorited_mutters, through: :favorites, source: :mutter

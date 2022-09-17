@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2022_09_06_122550) do
     t.integer "user_id", null: false
     t.string "weight"
     t.string "fat"
+    t.datetime "input_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

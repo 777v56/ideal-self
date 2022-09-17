@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-white">
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
   <%= link_to user_path(current_user.id),title:"自分のページに戻る" do %>
   <%= image_tag 'ロゴ.jpg', size: "300x100" %><% end %>
   <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
@@ -7,19 +7,19 @@
   <div class="collapse navbar-collapse" id="Navber">
     <ul class="navbar-nav ml-auto" style="max-height: 100px;">
       <li class="px-3">
-        <%= link_to mutters_timeline_path do %>
+        <%= link_to mutters_timeline_path, class:"link" do %>
         <strong>タイムライン<i class="fas fa-clock"></i></strong><% end %>
       </li>
       <li class="px-3">
-        <%= link_to mutters_path do %>
+        <%= link_to mutters_path, class:"link" do %>
         <strong>全てのつぶやき<i class="fa-solid fa-comment"></i></strong><% end %>
       </li>
       <li class="px-3">
-        <%= link_to users_path do %>
+        <%= link_to users_path, class:"link" do %>
         <strong>全てのユーザー<i class="fas fa-users"></i></strong><% end %>
       </li>
         <li class="px-3">
-        <%= link_to destroy_user_session_path,method: :delete,title:"ログアウト" do %>
+        <%= link_to destroy_user_session_path, class:"link", method: :delete, title:"ログアウト" do %>
         <i class="fas fa-sign-out-alt"></i><% end %>
       </li>
     </ul>

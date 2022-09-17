@@ -1,6 +1,6 @@
 <% users.each do |user| %>
   <div style="background-color: #e0ffff;" class="border-top border-left border-right rounded-top mt-4 p-2">
-    <%= link_to user_path(user.id) do %>
+    <%= link_to user_path(user.id), class:"link" do %>
       <%= image_tag user.get_profile_image, class: "rounded-circle mr-2", size: '35x35' %>
       <%= user.name %>
     <% end %>

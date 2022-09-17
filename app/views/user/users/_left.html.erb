@@ -1,21 +1,21 @@
 <div class="side-position">
-  <div class="border-top border-left border-right rounded-top p-3 w-100">
+  <div class="card", style="width: 250px;">
     <p class="text-center">
-      <%= image_tag user.get_profile_image, class: "rounded", width:'220' %><br>
+      <%= image_tag user.get_profile_image, class: "card-img-top" %><br>
       <strong>
         <%= user.name %>
         <% if user.name != "guestuser" %>
           <% if user == current_user %>
-            <%= link_to edit_user_path(current_user.id), title:"プロフィール編集" do %>
+            <%= link_to edit_user_path(current_user.id), class:"link", title:"プロフィール編集" do %>
               <i class="fas fa-user-cog"></i>
             <% end %>
 	        <% else %>
 	          <% if current_user.following?(user) %>
-              <%= link_to user_relationships_path(user.id), method: :delete, title:"フォロー解除" do %>
+              <%= link_to user_relationships_path(user.id), class:"link", method: :delete, title:"フォロー解除" do %>
                 <i class="fas fa-user-minus"></i>
               <% end %>
             <% else %>
-              <%= link_to user_relationships_path(user.id), method: :post, title:"フォロー追加" do %>
+              <%= link_to user_relationships_path(user.id), class:"link", method: :post, title:"フォロー追加" do %>
                 <i class="fas fa-user-plus"></i>
               <% end %>
             <% end %>
@@ -28,19 +28,16 @@
         <i class="fas fa-birthday-cake"></i>
         <%= user.birthday.strftime('%Y/%m/%d') %>
         　性別：<%= user.gender_i18n %>
-        身長：<%= user.height %>cm<br>
-        <%= link_to user_followings_path(user.id), class: "btn-sm btn-outline-secondary" do %>
-          フォロー<%= user.followings.count %>
+        　身長：<%= user.height %>cm<br>
+        <%= link_to user_followings_path(user.id), class:"link mr-3" do %>
+        フォロー<%= user.followings.count %>
         <% end %>
-        <%= link_to user_followers_path(user.id), class: "btn-sm btn-outline-secondary" do %>
-          フォロワー<%= user.followers.count %>
+        <%= link_to user_followers_path(user.id), class:"link" do %>
+        フォロワー<%= user.followers.count %>
         <% end %><br>
-        <%= link_to "記録を見る", record_path(user.id) %>
-        <%= link_to "いいね", favorite_path(user.id) %>
-      <% end %>
-  </div>
-  <div class="border-bottom border-left border-right rounded-bottom p-2 w-100">
-    <p class="text-center">
+        <%= link_to "記録", record_path(user.id), class:"link mr-3" %>
+        <%= link_to "いいね", favorite_path(user.id), class:"link" %>
+      <% end %><br>
       <%= user.introduction %>
     </p>
   </div>

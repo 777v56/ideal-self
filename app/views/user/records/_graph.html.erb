@@ -1,0 +1,22 @@
+<canvas id="myChart"></canvas>
+<script>
+    const type = "line";
+    let data = {
+        labels: [1日,10日, 20日, 30日],
+        datasets: [{
+            label: "体重",
+            data: [<%= records.weight %>]
+        }, {
+            label: '体脂肪率',
+            data: [<%= records.fats %>]
+        }]
+    }
+    let options;
+    const ctx = document.getElementById("myChart").getContext("2d");
+
+    const myChart = new Chart(ctx, {
+        type: type,
+        data: data,
+        options: options
+    });
+</script>

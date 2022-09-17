@@ -1,9 +1,9 @@
 <% if mutter.favorited_by?(current_user) %>
-  <%= link_to mutter_favorites_path(mutter), method: :delete, remote: true, title:"いいねを取り消す" do %>
+  <%= link_to mutter_favorites_path(mutter), class:"link", method: :delete, remote: true, title:"いいねを取り消す" do %>
   <i class="fas fa-heart"></i>
   <%= mutter.favorites.count %><% end %>
 <% else %>
-  <%= link_to mutter_favorites_path(mutter), method: :post, remote: true, title:"いいねする" do %>
+  <%= link_to mutter_favorites_path(mutter), class:"link", method: :post, remote: true, title:"いいねする" do %>
   <i class="far fa-heart"></i>
   <%= mutter.favorites.count %><% end %>
 <% end %>

@@ -1,0 +1,27 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>日付</th>
+      <th>体重</th>
+      <th>体脂肪率</th>
+      <% if user == current_user %>
+        <th></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% records.each do |record| %>
+      <tr>
+        <td><%= record.input_date.strftime('%Y/%m/%d') %></td>
+        <td class="text-right"><%= record.weight %>kg</td>
+        <td class="text-right"><%= record.fat %>%</td>
+        <% if record.user == current_user %>
+          <td>
+            <%= link_to "編集",edit_record_path(record.id), class:"link mr-3" %>
+            <%= link_to "削除", record, class:"link", method: :delete, data: { confirm: '本当に削除しますか？' } %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
