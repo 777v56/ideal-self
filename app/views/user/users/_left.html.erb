@@ -35,7 +35,7 @@
         <%= link_to user_followers_path(user.id), class:"link" do %>
         フォロワー<%= user.followers.count %>
         <% end %><br>
-        <%= link_to "記録", record_path(user.id), class:"link mr-3" %>
+        <%= link_to "記録", record_path(user.id), data: {"turbolinks" => false}, class:"link mr-3" %>
         <%= link_to "いいね", favorite_path(user.id), class:"link" %>
       <% end %><br>
       <%= user.introduction %>

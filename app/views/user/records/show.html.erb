@@ -24,9 +24,9 @@
       <%= render 'user/records/record', user: @user, records: @records %>
       <p class="text-center">
         <strong>
-          <%= link_to "前月",record_path(month:@month.prev_month), class:"link mr-3" %>
-          <%= link_to "今月",record_path(@user.id), class:"link mr-3" %>
-          <%= link_to "次月",record_path(month:@month.next_month), class:"link" %>
+          <%= link_to "前月",record_path(month:@month.prev_month), data: {"turbolinks" => false}, class:"link mr-3" %>
+          <%= link_to "今月",record_path(@user.id), data: {"turbolinks" => false}, class:"link mr-3" %>
+          <%= link_to "次月",record_path(month:@month.next_month), data: {"turbolinks" => false}, class:"link" %>
         </strong>
       </p>
     </div>

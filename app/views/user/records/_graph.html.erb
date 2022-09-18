@@ -2,13 +2,18 @@
 <script>
     const type = "line";
     let data = {
-        labels: [1日,10日, 20日, 30日],
+        labels: <%= records.map{ |r| r.input_date.strftime("%d日") }.to_s.html_safe %>,
+        // html_safeで""→&quotに変換されるのを防ぐ
         datasets: [{
             label: "体重",
-            data: [<%= records.weight %>]
+            data: <%= records.map(&:weight).map(&:to_i) %>,
+            borderColor: 'tomato',
+            backgroundColor: 'lightsalmon'
         }, {
             label: '体脂肪率',
-            data: [<%= records.fats %>]
+            data: <%= records.map(&:fat).map(&:to_i) %>,
+            borderColor: 'gold',
+            backgroundColor: 'khaki'
         }]
     }
     let options;
