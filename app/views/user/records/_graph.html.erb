@@ -14,6 +14,16 @@
             data: <%= records.map(&:fat).map(&:to_i) %>,
             borderColor: 'gold',
             backgroundColor: 'khaki'
+        }, {
+            label: "筋肉量",
+            data: <%= records.map(&:muscle).map(&:to_i) %>,
+            borderColor: 'springgreen',
+            backgroundColor: 'palegreen'
+        }, {
+            label: "ウエスト",
+            data: <%= records.map(&:waist).map(&:to_i) %>,
+            borderColor: 'cornflowerblue',
+            backgroundColor: 'lightskyblue'
         }]
     }
     let options;

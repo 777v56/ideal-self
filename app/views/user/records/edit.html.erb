@@ -5,17 +5,38 @@
     </div>
     <div class="col-lg-6 px-5">
       <h4><u><strong>記録の編集</strong></u></h4>
-      <div class="form-group m-5">
-        <%= form_with model:@record ,local:true do |f| %>
-          記録日を選択
-          <%= f.date_select :input_date, use_month_numbers: true %><br>
-          <%= f.text_field :weight %>kg<br>
-          <%= f.text_field :fat %>%
-          <p class="text-right">
-            <%= f.submit '記録する', class: 'btn btn-sm btn-danger' %>
-          </p>
-        <% end %>
-      </div>
+      <%= form_with model:@record ,local:true do |f| %>
+        <table class="form-table table-borderless mt-3">
+          <tr>
+            <td class="pr-3 pt-1"><%= f.label :記録日 %></td>
+            <td><%= f.date_select :input_date, use_month_numbers: true %></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="pr-3 pt-1"><%= f.label :体重 %></td>
+            <td><%= f.text_field :weight, size: 5 %> kg</td>
+            <td class="pr-3 py-1"><%= f.label :体脂肪率 %></td>
+            <td><%= f.text_field :fat, size: 5 %> %</td>
+          </tr>
+          <tr>
+            <td class="pt-1"><%= f.label :筋肉量 %></td>
+            <td><%= f.text_field :muscle, size: 5 %> kg</td>
+            <td class="pt-1"><%= f.label :ウエスト %></td>
+            <td><%= f.text_field :waist, size: 5 %> cm</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td class="pr-3 pt-1">
+              <%= f.submit '更新する', class: 'btn btn-sm btn-primary' %>
+            </td>
+            <td class="pr-3 pt-1">
+              <%= link_to "削除する", @record, class:"btn btn-sm btn-danger", method: :delete, data: { confirm: '本当に削除しますか？' } %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
     </div>
     <div class="col-lg-3">
       <%= render 'user/users/right', user: @user %>

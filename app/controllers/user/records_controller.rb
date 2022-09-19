@@ -42,7 +42,7 @@ class User::RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:record).permit(:weight, :fat, :input_date)
+    params.require(:record).permit(:weight, :fat, :input_date, :waist, :muscle)
   end
 
 end

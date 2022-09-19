@@ -1,26 +1,29 @@
-<table class="table table-bordered">
+<table class="table table-bordered my-5">
   <thead>
     <tr>
-      <th>日付</th>
-      <th>体重</th>
-      <th>体脂肪率</th>
-      <% if user == current_user %>
-        <th></th>
-      <% end %>
+      <th class="text-center">日付</th>
+      <th class="text-center">体重</th>
+      <th class="text-center">体脂肪率</th>
+      <th class="text-center">筋肉量</th>
+      <th class="text-center">ウエスト</th>
     </tr>
   </thead>
   <tbody>
     <% records.each do |record| %>
       <tr>
-        <td><%= record.input_date.strftime('%Y/%m/%d') %></td>
-        <td class="text-right"><%= record.weight %>kg</td>
-        <td class="text-right"><%= record.fat %>%</td>
-        <% if record.user == current_user %>
-          <td>
-            <%= link_to "編集",edit_record_path(record.id), class:"link mr-3" %>
-            <%= link_to "削除", record, class:"link", method: :delete, data: { confirm: '本当に削除しますか？' } %>
-          </td>
-        <% end %>
+        <td>
+          <% if record.user == current_user %>
+            <%= link_to edit_record_path(record.id), class:"link" do %>
+              <%= record.input_date.strftime('%Y/%m/%d') %>
+            <% end %>
+          <% else %>
+            <%= record.input_date.strftime('%Y/%m/%d') %>
+          <% end %>
+        </td>
+        <td class="text-right pr-2"><%= record.weight %>kg</td>
+        <td class="text-right pr-2"><%= record.fat %>%</td>
+        <td class="text-right pr-2"><%= record.muscle %>kg</td>
+        <td class="text-right pr-2"><%= record.waist %>cm</td>
       </tr>
     <% end %>
   </tbody>

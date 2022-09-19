@@ -4,42 +4,46 @@
       <%= render 'user/users/left', user: current_user %>
     </div>
     <div class="col-lg-6 px-5">
-      <h4><u><strong>プロフィール編集</strong></u></h4>
+      <h4 class="mb-3"><u><strong>プロフィール編集</strong></u></h4>
       <%= form_with model:@user, local:true do |f| %>
-        <div class="form-group">
-          <%= f.label :ユーザー名 %>
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :アイコン用画像 %><br>
-          <%= f.file_field :profile_image, accept: 'image/*' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :身長 %>
-          <%= f.text_field :height, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :性別　 %>
-          <%= f.radio_button :gender, "men" %>
-          <%= f.label :gender, "男" %>
-          <%= f.radio_button :gender, "women" %>
-          <%= f.label :gender, "女" %>
-          <%= f.radio_button :gender, "secret" %>
-          <%= f.label :gender, "内緒" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :生年月日　 %>
-          <%= f.date_select :birthday, use_month_numbers: true, start_year: 1970, end_year: (Time.now.year - 10) %>
-        </div>
+        <table class="form-table">
+          <tr>
+            <td><%= f.label :ユーザー名 %></td>
+            <td class="pb-2"><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :アイコン %></td>
+            <td class="pb-2"><%= f.file_field :profile_image, accept: 'image/*' %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :身長 %></td>
+            <td class="pb-2"><%= f.text_field :height %> cm</td>
+          </tr>
+          <tr>
+            <td><%= f.label :性別 %></td>
+            <td>
+              <%= f.radio_button :gender, "men" %>
+              <%= f.label :gender, "男" %>
+              <%= f.radio_button :gender, "women" %>
+              <%= f.label :gender, "女" %>
+              <%= f.radio_button :gender, "secret" %>
+              <%= f.label :gender, "内緒" %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.label :生年月日 %></td>
+            <td class="pb-2">
+              <%= f.date_select :birthday, use_month_numbers: true, start_year: 1970, end_year: (Time.now.year - 10) %>
+            </td>
+          </tr>
+        </table>
         <div class="form-group">
           <%= f.label :自己紹介文 %>
           <%= f.text_area :introduction, class: "form-control" %>
         </div>
         <p class="text-right">
-          <%= f.submit "更新する", class: 'btn btn-sm btn-secondary' %>
-        </p>
-        <p class="text-right">
-          <%= link_to "退会する", users_withdrawal_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class: "btn btn-sm btn-danger" %>
+          <%= f.submit "更新する", class: 'btn btn-sm btn-primary mr-3' %>
+           <%= link_to "退会する", users_withdrawal_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class: "btn btn-sm btn-danger" %>
         </p>
       <% end %>
     </div>

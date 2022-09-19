@@ -19,7 +19,7 @@ class User::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to user_path(@user.id), notice: "You have updated user successfully."
+      redirect_back(fallback_location: user_path(current_user.id))
       flash[:notice] = "更新しました"
     else
       render edit_user_path(current_user.id)
