@@ -6,8 +6,10 @@ class Admin::SearchesController < ApplicationController
 
     if @range == "つぶやき"
       @mutters = Mutter.looks(params[:search], params[:word])
+    elsif @range == "コメント"
+      @comments = Comment.looks(params[:search], params[:word])
     else
-      @comment = Comment.looks(params[:search], params[:word])
+      @users = User.looks(params[:search], params[:word])
     end
   end
 

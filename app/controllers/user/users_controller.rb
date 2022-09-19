@@ -12,6 +12,10 @@ class User::UsersController < ApplicationController
     @mutters = @user.mutters.order("created_at DESC").page(params[:page]).per(10)
   end
 
+  def edit
+    @user = current_user
+  end
+
   def update
     @user = current_user
     if @user.update(user_params)
@@ -23,14 +27,18 @@ class User::UsersController < ApplicationController
     end
   end
 
-  def edit
+  def withdrawal
     @user = current_user
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+    flash[:notice] = "退会しました"
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :gender, :birthday, :height, :introduction, :profile_image)
+    params.require(:user).permit(:name, :gender, :birthday, :height, :introduction, :profile_image, :is_deleted)
   end
 
   def ensure_correct_user

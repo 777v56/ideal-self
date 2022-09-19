@@ -4,19 +4,27 @@
   </button>
   <div class="collapse navbar-collapse" id="Navber">
     <ul class="navbar-nav ml-auto" style="max-height: 100px;">
-      <div class="center search_form">
+      <div class="center search_form mr-3">
         <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
-        <%= f.text_field :word, class: 'form-control', col: 'auto', placeholder: "キーワードを入力" %>
-        <%= f.select :range, options_for_select([['つぶやき'], ['コメント']]) %>
-        <%= f.select :search, options_for_select([["部分一致","partial_match"], ["完全一致","perfect_match"]]) %>
-        <%= f.submit "検索", class: 'btn btn-sm btn-secondary' %>
+          <%= f.text_field :word, class: 'form-control', col: 'auto', placeholder: "キーワードを入力" %>
+          <%= f.select :range, options_for_select([['つぶやき'], ['コメント'], ['ユーザー名']]) %>
+          <%= f.select :search, options_for_select([["部分一致","partial_match"], ["完全一致","perfect_match"]]) %>
+          <%= f.submit "検索", class: 'btn btn-sm btn-secondary' %>
         <% end %>
       </div>
-      <li class="px-3">
+       <li class="p-3">
         <%= link_to admin_root_path, class:"link" do %>
         <strong>全てのつぶやき<i class="fa-solid fa-comment"></i></strong><% end %>
       </li>
-      <li class="px-3">
+      <li class="p-3">
+        <%= link_to admin_comments_path, class:"link" do %>
+        <strong>全てのコメント<i class="fa-solid fa-comment"></i></strong><% end %>
+      </li>
+      <li class="p-3">
+        <%= link_to admin_users_path, class:"link" do %>
+        <strong>全てのユーザー<i class="fa-solid fa-comment"></i></strong><% end %>
+      </li>
+      <li class="p-3">
       <%= link_to destroy_admin_session_path, class:"link", method: :delete,title:"ログアウト" do %>
       <i class="fas fa-sign-out-alt"></i><% end %>
       </li>

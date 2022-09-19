@@ -13,7 +13,6 @@ class User::CommentsController < ApplicationController
   @mutter = Mutter.find(params[:mutter_id])
   @comment = Comment.new
   Comment.find(params[:id]).destroy
-
  end
 
  private

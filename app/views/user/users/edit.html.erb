@@ -38,6 +38,9 @@
         <p class="text-right">
           <%= f.submit "更新する", class: 'btn btn-sm btn-secondary' %>
         </p>
+        <p class="text-right">
+          <%= link_to "退会する", users_withdrawal_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class: "btn btn-sm btn-danger" %>
+        </p>
       <% end %>
     </div>
     <div class="col-lg-3">

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'comments/index'
+  end
+  namespace :admin do
+    get 'users/index'
+  end
  devise_for :users, skip: [:passwords], controllers:{
   registrations: "user/registrations",
   sessions: 'user/sessions'
@@ -16,12 +22,15 @@ Rails.application.routes.draw do
   root to: "mutters#index"
   get "search" => "searches#search"
   resources :mutters, only: [:index,:destroy]
+  resources :users, only: [:index,:update]
+  resources :comments, only: [:index,:destroy]
  end
 
  scope module: :user do
   root to: "homes#top"
   get "search" => "searches#search"
   get "mutters/timeline"
+  patch 'users/withdrawal' => 'users#withdrawal'
   resources :records, only: [:show,:edit,:create,:destroy,:update]
   resources :mutters, only: [:index,:show,:edit,:create,:destroy,:update] do
    resource :favorites, only: [:create, :destroy]

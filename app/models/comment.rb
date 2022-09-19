@@ -11,9 +11,9 @@ class Comment < ApplicationRecord
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
-      @comment = Comment.where("mutter LIKE?","#{word}")
+      @comment = Comment.where("comment LIKE?","#{word}")
     elsif search == "partial_match"
-      @comment = Comment.where("mutter LIKE?","%#{word}%")
+      @comment = Comment.where("comment LIKE?","%#{word}%")
     else
       @comment = Comment.all
     end

@@ -5,7 +5,7 @@ class Admin::MuttersController < ApplicationController
     @users = User.all
     @mutter = Mutter.new
     @user = User.where(mutter_id:@mutter)
-    @mutters = Mutter.all.order("created_at DESC").page(params[:page]).per(10)
+    @mutters = Mutter.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def destroy
