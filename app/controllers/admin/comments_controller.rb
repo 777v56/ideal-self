@@ -9,9 +9,9 @@ class Admin::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = comment.find(params[:id])
+    @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to admin_comments_path
+    redirect_to admin_comments_path, notice: "削除しました。"
   end
 
   private

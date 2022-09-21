@@ -1,19 +1,19 @@
 <div class ="side-position">
   <div class="form-group mb-5 mr-5">
     <%= form_with model: Mutter.new,local:true do |f| %>
-      <%= f.text_area :mutter, class: 'form-control', rows: '5', placeholder: "つぶやきの内容を入力" %>
-      <%= f.file_field :mutter_image, accept: 'image/*' %>
+      <%= f.text_area :mutter, class: "form-control", rows: "5", placeholder: "つぶやきの内容を入力" %>
+      <%= f.file_field :mutter_image, accept: "image/*" %>
       <p class="text-right">
-        <%= f.submit 'つぶやく', class: 'btn btn-sm btn-success' %>
+        <%= f.submit "つぶやく", class: "btn btn-sm btn-success" %>
       </p>
     <% end %>
   </div>
   <div class="search_form mr-5">
     <%= form_with url: search_path, local: true, method: :get do |f| %>
-      <%= f.text_field :word, class: 'form-control', col: 'auto', placeholder: "キーワードを入力" %>
-      <%= f.select :range, options_for_select([['つぶやき'], ['ユーザー名']]) %>
+      <%= f.text_field :word, class: "form-control", col: "auto", placeholder: "キーワードを入力" %>
+      <%= f.select :range, options_for_select([["つぶやき"], ["ユーザー名"]]) %>
       <%= f.select :search, options_for_select([["部分一致","partial_match"], ["完全一致","perfect_match"]]) %>
-      <%= f.submit "検索", class: 'btn btn-sm btn-secondary' %>
+      <%= f.submit "検索", class: "btn btn-sm btn-secondary" %>
     <% end %>
   </div>
 </div>

@@ -1,4 +1,5 @@
 class User::RelationshipsController < ApplicationController
+  before_action :authenticate_user!
 
   # フォローするとき
   def create

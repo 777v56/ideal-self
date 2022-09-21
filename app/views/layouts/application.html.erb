@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
     <script src="https://kit.fontawesome.com/cccf4986d1.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"></script>
   </head>
   <header class="sticky-top">
     <% if admin_signed_in? %>
-      <%= render 'layouts/admin' %>
+      <%= render "layouts/admin" %>
     <% elsif user_signed_in? %>
-      <%= render 'layouts/user' %>
+      <%= render "layouts/user" %>
     <% else %>
-      <%= render 'layouts/header' %>
+      <%= render "layouts/header" %>
     <% end %>
   </header>
   <body>
@@ -27,6 +27,6 @@
     </main>
   </body>
   <footer>
-    <%= render 'layouts/footer' %>
+    <%= render "layouts/footer" %>
   </footer>
 </html>

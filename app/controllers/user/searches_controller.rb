@@ -1,4 +1,6 @@
 class User::SearchesController < ApplicationController
+  before_action :authenticate_user!
+
   def search
     @range = params[:range]
     @word = params[:word]
@@ -9,4 +11,5 @@ class User::SearchesController < ApplicationController
       @mutters = Mutter.looks(params[:search], params[:word])
     end
   end
+
 end

@@ -1,24 +1,34 @@
 class User::CommentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:update, :edit, :destroy]
 
- def create
-  @mutter = Mutter.find(params[:mutter_id])
-  @comment = Comment.new
-  mutter = Mutter.find(params[:mutter_id])
-  comment = current_user.comments.new(comment_params)
-  comment.mutter_id = mutter.id
-  comment.save
- end
+  def create
+    @mutter = Mutter.find(params[:mutter_id])
+    @comment = Comment.new
+    comment = current_user.comments.new(comment_params)
+    comment.mutter_id = @mutter.id
+    comment.save
+    flash[:notice] = "コメントしました。"
+　end
 
- def destroy
-  @mutter = Mutter.find(params[:mutter_id])
-  @comment = Comment.new
-  Comment.find(params[:id]).destroy
- end
+  def destroy
+    @mutter = Mutter.find(params[:mutter_id])
+    @comment = Comment.new
+    Comment.find(params[:id]).destroy
+    flash[:notice] = "削除しました。"
+  end
 
- private
+  private
 
- def comment_params
-  params.require(:comment).permit(:comment, :comment_image)
- end
+  def comment_params
+    params.require(:comment).permit(:comment, :comment_image)
+  end
+
+  def ensure_correct_user
+    comment = Comment.find(params[:id])
+    unless comment.user == current_user
+    redirect_to user_path(current_user.id), notice:"権限がありません。"
+    end
+  end
 
 end

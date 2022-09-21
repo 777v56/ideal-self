@@ -4,7 +4,7 @@
   <!--投稿主情報-->
   <div style="background-color: #fff0f5;" class="border-top border-left border-right rounded-top mt-4 p-2">
     <%= link_to user_path(mutter.user.id), class:"link" do %>
-      <%= image_tag mutter.user.get_profile_image, class: "rounded-circle mr-2", size: '35x35' %>
+      <%= image_tag mutter.user.get_profile_image, class: "rounded-circle mr-2", size: "35x35" %>
       <%= mutter.user.name %>
     <% end %>
   </div>
@@ -14,7 +14,7 @@
     <strong><%= mutter.mutter %></strong><br>
     <p class="text-center">
       <% if mutter.mutter_image.attached? %>
-        <%= image_tag mutter.mutter_image, class: "rounded", height: '200' %>
+        <%= image_tag mutter.mutter_image, class: "rounded", height: "200" %>
       <% end %>
     </p>
     <p class="text-right">
@@ -25,7 +25,7 @@
   <!--いいね・コメント・編集・削除-->
   <div class="bottom border-bottom border-left border-right rounded-bottom mb-4 pt-1 pl-3">
     <p class="pr-3" id="favorite-btn-<%= mutter.id %>">
-      <%= render 'user/favorites/favorite-btn', mutter: mutter %>
+      <%= render "user/favorites/favorite-btn", mutter: mutter %>
     </p>
     <p class="pr-3">
       <%= link_to mutter_path(mutter.id), class:"link", title:"コメントする" do %>
@@ -40,7 +40,7 @@
         <% end %>
       </p>
       <p class="pr-3">
-        <%= link_to mutter, class:"link", method: :delete, data: { confirm: '本当に削除しますか？' }, title:"削除する" do %>
+        <%= link_to mutter, class:"link", method: :delete, data: { confirm: "本当に削除しますか？" }, title:"削除する" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </p>

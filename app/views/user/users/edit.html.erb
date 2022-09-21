@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row pb-5">
     <div class="col-lg-3">
-      <%= render 'user/users/left', user: current_user %>
+      <%= render "user/users/left", user: current_user %>
     </div>
     <div class="col-lg-6 px-5">
       <h4 class="mb-3"><u><strong>プロフィール編集</strong></u></h4>
@@ -13,7 +13,7 @@
           </tr>
           <tr>
             <td><%= f.label :アイコン %></td>
-            <td class="pb-2"><%= f.file_field :profile_image, accept: 'image/*' %></td>
+            <td class="pb-2"><%= f.file_field :profile_image, accept: "image/*" %></td>
           </tr>
           <tr>
             <td><%= f.label :身長 %></td>
@@ -42,13 +42,13 @@
           <%= f.text_area :introduction, class: "form-control" %>
         </div>
         <p class="text-right">
-          <%= f.submit "更新する", class: 'btn btn-sm btn-primary mr-3' %>
+          <%= f.submit "更新する", class: "btn btn-sm btn-primary mr-3" %>
            <%= link_to "退会する", users_withdrawal_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class: "btn btn-sm btn-danger" %>
         </p>
       <% end %>
     </div>
     <div class="col-lg-3">
-      <%= render 'user/users/right' %>
+      <%= render "user/users/right" %>
     </div>
   </div>
   </div>

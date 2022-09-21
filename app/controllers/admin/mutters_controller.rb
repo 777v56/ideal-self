@@ -11,6 +11,7 @@ class Admin::MuttersController < ApplicationController
   def destroy
     @mutter = Mutter.find(params[:id])
     @mutter.destroy
+    flash[:notice] = "削除しました。"
     redirect_back(fallback_location: root_path)
   end
 

@@ -7,23 +7,23 @@
         datasets: [{
             label: "体重",
             data: <%= records.map(&:weight).map(&:to_i) %>,
-            borderColor: 'tomato',
-            backgroundColor: 'lightsalmon'
+            borderColor: "tomato",
+            backgroundColor: "lightsalmon"
         }, {
-            label: '体脂肪率',
+            label: "体脂肪率",
             data: <%= records.map(&:fat).map(&:to_i) %>,
-            borderColor: 'gold',
-            backgroundColor: 'khaki'
+            borderColor: "gold",
+            backgroundColor: "khaki"
         }, {
             label: "筋肉量",
             data: <%= records.map(&:muscle).map(&:to_i) %>,
-            borderColor: 'springgreen',
-            backgroundColor: 'palegreen'
+            borderColor: "springgreen",
+            backgroundColor: "palegreen"
         }, {
             label: "ウエスト",
             data: <%= records.map(&:waist).map(&:to_i) %>,
-            borderColor: 'cornflowerblue',
-            backgroundColor: 'lightskyblue'
+            borderColor: "cornflowerblue",
+            backgroundColor: "lightskyblue"
         }]
     }
     let options;

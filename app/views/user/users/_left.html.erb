@@ -9,8 +9,8 @@
             <%= link_to edit_user_path(current_user.id), class:"link", title:"プロフィール編集" do %>
               <i class="fas fa-user-cog"></i>
             <% end %>
-	        <% else %>
-	          <% if current_user.following?(user) %>
+          <% else %>
+            <% if current_user.following?(user) %>
               <%= link_to user_relationships_path(user.id), class:"link", method: :delete, title:"フォロー解除" do %>
                 <i class="fas fa-user-minus"></i>
               <% end %>
@@ -24,20 +24,18 @@
       </strong>
     </p>
     <p class="small text-center">
-      <% if user.name != "guestuser" %>
-        <i class="fas fa-birthday-cake"></i>
-        <%= user.birthday.strftime('%Y/%m/%d') %>
-        　性別：<%= user.gender_i18n %>
-        　身長：<%= user.height %>cm<br>
-        <%= link_to user_followings_path(user.id), class:"link mr-3" do %>
+      <i class="fas fa-birthday-cake"></i>
+      <%= user.birthday.strftime("%Y/%m/%d") %>
+      　性別：<%= user.gender_i18n %>
+      　身長：<%= user.height %>cm<br>
+      <%= link_to user_followings_path(user.id), class:"link mr-3" do %>
         フォロー<%= user.followings.count %>
-        <% end %>
-        <%= link_to user_followers_path(user.id), class:"link" do %>
+      <% end %>
+      <%= link_to user_followers_path(user.id), class:"link" do %>
         フォロワー<%= user.followers.count %>
-        <% end %><br>
-        <%= link_to "記録", record_path(user.id), data: {"turbolinks" => false}, class:"link mr-3" %>
-        <%= link_to "いいね", favorite_path(user.id), class:"link" %>
       <% end %><br>
+      <%= link_to "記録", record_path(user.id), data: {"turbolinks" => false}, class:"link mr-3" %>
+      <%= link_to "いいね", favorite_path(user.id), class:"link" %><br>
       <%= user.introduction %>
     </p>
   </div>

@@ -1,20 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <%= render 'user/users/left', user: current_user %>
+      <%= render "user/users/left", user: current_user %>
     </div>
     <div class="col-lg-5">
       <% if @range == "ユーザー名" %>
         <h4><u><strong>「<%= @word %>」が含まれるユーザーの一覧</strong></u></h4>
-        <%= render 'user/users/list', users: @users %>
+        <%= render "user/users/list", users: @users %>
       <% else %>
         <h4><u><strong>「<%= @word %>」を含むつぶやき一覧</strong></u></h4>
-        <%= render 'user/mutters/mutter', mutters: @mutters, users: @users, comment: @comment %>
+        <%= render "user/mutters/mutter", mutters: @mutters, users: @users, comment: @comment %>
       <% end %>
     </div>
     <div class="col-lg-1"></div>
     <div class="col-lg-3">
-      <%= render 'user/users/right' %>
+      <%= render "user/users/right" %>
     </div>
   </div>
   </div>

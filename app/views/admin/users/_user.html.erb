@@ -2,7 +2,7 @@
   <div class="box">
     <div style="background-color: #e0ffff;" class="border-top border-left border-right rounded-top mt-4 p-2">
       <%= link_to user_path(user.id), class:"link" do %>
-        <%= image_tag user.get_profile_image, class: "rounded-circle mr-2", size: '35x35' %>
+        <%= image_tag user.get_profile_image, class: "rounded-circle mr-2", size: "35x35" %>
         <%= user.name %>
       <% end %>
     </div>
@@ -11,11 +11,11 @@
     </div>
     <div class="bottom border-bottom border-left border-right rounded-bottom mb-4 pt-1 pl-3">
       <%= form_with model: [:admin, user], method: :patch do |f| %>
-        <%= f.radio_button :is_deleted, 'false' %>
-        <%= f.label :is_deleted, '有効' %>
-        <%= f.radio_button :is_deleted, 'true' %>
-        <%= f.label :is_deleted, '退会' %>
-        <%= f.submit '更新', class: 'btn btn-sm btn-outline-danger mx-2'%>
+        <%= f.radio_button :is_deleted, "false" %>
+        <%= f.label :is_deleted, "有効" %>
+        <%= f.radio_button :is_deleted, "true" %>
+        <%= f.label :is_deleted, "退会" %>
+        <%= f.submit "更新", class: "btn btn-sm btn-outline-danger mx-2"%>
       <% end %>
     </div>
   </div>

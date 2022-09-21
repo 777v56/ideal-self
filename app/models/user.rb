@@ -4,8 +4,29 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :introduction, Length: { maximum: 100 }
-  validates :name, presence: true, uniqueness: true, Length: { maximum: 15 }
+  has_many :mutters, dependent: :destroy
+  has_many :records, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :records, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
+  # 一覧画面で使う
+  has_many :favorited_mutters, through: :favorites, source: :mutter
+
+  # フォローをした、されたの関係
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+
+  # 一覧画面で使う
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+
+  has_one_attached :profile_image
+
+  enum gender: { men: 0, women: 1, secret: 2 }
+
+  validates :introduction, length: { maximum: 100 }
+  validates :name, presence: true, uniqueness: true, length: { maximum: 15 }
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
@@ -15,29 +36,26 @@ class User < ApplicationRecord
     end
   end
 
-  enum gender: { men: 0, women: 1, secret: 2 }
-
-  has_one_attached :profile_image
+   # 検索方法分岐
+  def self.looks(search, word)
+    @user = case search
+      when "perfect_match"
+        User.where("name LIKE ?", "#{word}")
+      when "partial_match"
+        User.where("name LIKE ?","%#{word}%")
+      else
+        User.all
+    end
+  end
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'ノーイメージ.jpg'
   end
 
-  has_many :mutters, dependent: :destroy
-  has_many :records, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :records, dependent: :destroy
-
-  has_many :favorites, dependent: :destroy
-  # 一覧画面で使う
-  has_many :favorited_mutters, through: :favorites, source: :mutter
-
-  # フォローをした、されたの関係
-  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  # 一覧画面で使う
-  has_many :followings, through: :relationships, source: :followed
-  has_many :followers, through: :reverse_of_relationships, source: :follower
+  # is_deletedがfalseならtrueを返すようにしている
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
   # フォローしたときの処理
   def follow(user_id)
@@ -50,17 +68,6 @@ class User < ApplicationRecord
   # フォローしているか判定
   def following?(user)
     followings.include?(user)
-  end
-
-  # 検索方法分岐
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @user = User.where("name LIKE?", "#{word}")
-    elsif search == "partial_match"
-      @user = User.where("name LIKE?","%#{word}%")
-    else
-      @user = User.all
-    end
   end
 
 end

@@ -1,9 +1,9 @@
 class User::UsersController < ApplicationController
-  before_action :ensure_correct_user, only: [:update , :edit]
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:update, :edit]
 
   def index
-    @users = User.all.order("created_at DESC").page(params[:page]).per(10)
+    @users = User.where(is_deleted: false).order("created_at DESC").page(params[:page]).per(10)
   end
 
   def show
@@ -19,11 +19,10 @@ class User::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_back(fallback_location: user_path(current_user.id))
-      flash[:notice] = "更新しました"
+      redirect_to user_path(current_user.id), notice: "変更しました。"
     else
-      render edit_user_path(current_user.id)
-      flash[:alert] = "更新に失敗しました"
+      flash[:alert] = "変更に失敗しました。"
+      render :edit
     end
   end
 
@@ -31,8 +30,7 @@ class User::UsersController < ApplicationController
     @user = current_user
     @user.update(is_deleted: true)
     reset_session
-    redirect_to root_path
-    flash[:notice] = "退会しました"
+    redirect_to root_path, notice: "退会しました。"
   end
 
   private
@@ -42,16 +40,9 @@ class User::UsersController < ApplicationController
   end
 
   def ensure_correct_user
-    @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to user_path(current_user.id)
-    end
-  end
-
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.name == "guestuser"
-      redirect_to mutters_path , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    user = User.find(params[:id])
+    unless user == current_user
+      redirect_to user_path(current_user.id), notice: "権限がありません。"
     end
   end
 

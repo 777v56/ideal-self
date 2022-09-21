@@ -6,7 +6,6 @@ class User::SessionsController < Devise::SessionsController
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
       user.birthday = "20000101"
-      user.gender = "不明"
     end
     sign_in user
     redirect_to mutters_path, notice: 'ゲストユーザーとしてログインしました。'
