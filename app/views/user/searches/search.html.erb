@@ -3,16 +3,25 @@
     <div class="col-lg-3">
       <%= render "user/users/left", user: current_user %>
     </div>
-    <div class="col-lg-5">
+    <div class="col-lg-6">
       <% if @range == "ユーザー名" %>
-        <h4><u><strong>「<%= @word %>」が含まれるユーザーの一覧</strong></u></h4>
+        <h4>
+          <strong>
+            <i class="far fa-moon"></i>
+            「<%= @word %>」が含まれるユーザーの一覧
+          </strong>
+        </h4>
         <%= render "user/users/list", users: @users %>
       <% else %>
-        <h4><u><strong>「<%= @word %>」を含むつぶやき一覧</strong></u></h4>
+        <h4>
+          <strong>
+            <i class="far fa-moon"></i>
+            「<%= @word %>」を含むつぶやき一覧
+          </strong>
+        </h4>
         <%= render "user/mutters/mutter", mutters: @mutters, users: @users, comment: @comment %>
       <% end %>
     </div>
-    <div class="col-lg-1"></div>
     <div class="col-lg-3">
       <%= render "user/users/right" %>
     </div>

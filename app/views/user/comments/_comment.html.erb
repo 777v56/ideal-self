@@ -2,7 +2,7 @@
   <div class="box">
     <!--コメント主情報-->
     <div style="background-color:#fffacd;" class="border-top border-left border-right rounded-top mt-4 p-2">
-      <%= link_to(comment.user) do %>
+      <%= link_to comment.user, class: "link" do %>
         <%= image_tag comment.user.get_profile_image, class: "rounded-circle mr-2", size:"35x35" %>
         <%= comment.user.name %>
       <% end %>

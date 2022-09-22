@@ -3,8 +3,13 @@
     <div class="col-lg-3">
       <%= render "user/users/left", user: @user %>
     </div>
-    <div class="col-lg-6 px-5">
-      <h4 class="mb-3"><u><strong><%= @user.name %>の記録</strong></u></h4>
+    <div class="col-lg-6">
+      <h4 class="mb-4">
+        <strong>
+          <i class="far fa-moon"></i>
+          <%= @user.name %>の記録
+        </strong>
+      </h4>
       <!--グラフ-->
       <%= render "user/records/graph", user: @user, records: @records %>
       <!--投稿フォーム-->

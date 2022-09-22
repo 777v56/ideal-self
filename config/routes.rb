@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     get "mutters/timeline"
     patch 'users/withdrawal'
     resources :records, only: [:show, :edit, :create, :destroy, :update]
-    resources :mutters, only: [:index,:show,:edit,:create,:destroy,:update] do
+    resources :mutters, only: [:index, :show, :edit, :create, :destroy, :update] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end

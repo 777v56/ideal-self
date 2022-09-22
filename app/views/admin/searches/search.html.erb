@@ -3,13 +3,28 @@
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
       <% if @range == "つぶやき" %>
-        <h4><u><strong>「<%= @word %>」を含むつぶやきの一覧</strong></u></h4>
+        <h4>
+          <strong>
+            <i class="far fa-star"></i>
+            「<%= @word %>」を含むつぶやき一覧
+          </strong>
+        </h4>
         <%= render 'admin/mutters/mutter', mutters: @mutters, users: @users %>
       <% elsif @range == "コメント" %>
-        <h4><u><strong>「<%= @word %>」を含むコメントの一覧</strong></u></h4>
+        <h4>
+          <strong>
+            <i class="far fa-star"></i>
+            「<%= @word %>」を含むコメント一覧
+          </strong>
+        </h4>
         <%= render 'admin/comments/comment', comments: @comments %>
       <% else %>
-        <h4><u><strong>「<%= @word %>」を含むユーザーの一覧</strong></u></h4>
+        <h4>
+          <strong>
+            <i class="far fa-moon"></i>
+            「<%= @word %>」を含むユーザー一覧
+          </strong>
+        </h4>
         <%= render 'admin/users/user', users: @users %>
       <% end %>
     </div>

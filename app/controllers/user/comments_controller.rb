@@ -8,14 +8,12 @@ class User::CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.mutter_id = @mutter.id
     comment.save
-    flash[:notice] = "コメントしました。"
-　end
+  end
 
   def destroy
     @mutter = Mutter.find(params[:mutter_id])
     @comment = Comment.new
     Comment.find(params[:id]).destroy
-    flash[:notice] = "削除しました。"
   end
 
   private

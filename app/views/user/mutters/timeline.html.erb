@@ -3,8 +3,13 @@
     <div class="col-lg-3">
       <%= render "user/users/left", user: current_user %>
     </div>
-    <div class="col-lg-6 px-5">
-      <h4><u><strong>フォローしているユーザーのつぶやき</strong></u></h4>
+    <div class="col-lg-6">
+      <h4>
+        <strong>
+          <i class="far fa-moon"></i>
+          フォローしているユーザーのつぶやき
+        </strong>
+      </h4>
       <%= render "user/mutters/mutter", mutters: @mutters %>
       <%= paginate @mutters, theme: "twitter-bootstrap-4" %>
     </div>

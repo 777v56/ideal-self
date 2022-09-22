@@ -21,8 +21,12 @@
   </header>
   <body>
     <main>
-      <p class="text-center text-info"><strong><%= notice %></strong></p>
-      <p class="text-center text-danger"><strong><%= alert %></strong></p>
+      <p class="text-center">
+        <strong>
+          <%= notice %>
+          <%= alert %>
+        </strong>
+      </p>
       <%= yield %>
     </main>
   </body>

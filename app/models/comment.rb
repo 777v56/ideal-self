@@ -1,7 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :mutter
-  has_many :favorites, dependent: :destroy
 
   has_one_attached :comment_image
 
@@ -15,10 +14,6 @@ class Comment < ApplicationRecord
       else
         Comment.all
       end
-  end
-
-  def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
   end
 
 end

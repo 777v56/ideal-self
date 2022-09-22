@@ -1,9 +1,23 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import 'https://fonts.googleapis.com/css?family=Noto+Sans+JP';
 
-.side-position {
+* {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #696969;
+}
+
+.side {
  position: fixed;
  top: 120px;
+}
+
+.card {
+  width: 230px;
+}
+
+.box {
+  width: 95%;
 }
 
 .pagination {
@@ -11,7 +25,6 @@
 }
 
 .link {
-  text-decoration: none;
   color: #696969;
 }
 
@@ -32,7 +45,15 @@
 }
 
 @media (max-width: 1115px) {
-	.side-position {
+	.side {
 	  position: static;
+	}
+
+	.card {
+  width: 100%;
+}
+
+	.box {
+	  width: 100%;
 	}
 }

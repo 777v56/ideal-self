@@ -3,8 +3,13 @@
     <div class="col-lg-3">
       <%= render "user/users/left", user: current_user %>
     </div>
-    <div class="col-lg-6 px-5">
-      <h4 class="mb-3"><u><strong>プロフィール編集</strong></u></h4>
+    <div class="col-lg-6">
+      <h4 class="mb-4">
+        <strong>
+          <i class="far fa-moon"></i>
+          プロフィール編集
+        </strong>
+      </h4>
       <%= form_with model:@user, local:true do |f| %>
         <table class="form-table">
           <tr>

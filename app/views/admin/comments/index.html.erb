@@ -2,6 +2,12 @@
   <div class="row">
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
+        <h4>
+          <strong>
+            <i class="far fa-star"></i>
+            全てのコメント
+          </strong>
+        </h4>
       <%= render "admin/comments/comment", comments: @comments, users: @users %>
       <%= paginate @comments, theme: "twitter-bootstrap-4" %>
     </div>
