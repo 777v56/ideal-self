@@ -31,26 +31,22 @@
     <tr>
       <th class="text-center">結果</th>
       <th class="text-right pr-2">
-        <% if records.map(&:weight).blank? %>
-        <% else %>
+        <% if records.map(&:weight).present? %>
           <%= records.last.weight - records.first.weight %>kg
         <% end %>
       </th>
       <th class="text-right pr-2">
-        <% if records.map(&:fat).blank? %>
-        <% else %>
+        <% if records.map(&:fat).present? %>
           <%= records.last.fat - records.first.fat %>%
         <% end %>
       </th>
       <th class="text-right pr-2">
-        <% if records.map(&:muscle).blank? %>
-        <% else %>
+        <% if records.map(&:muscle).present? %>
           <%= records.last.muscle - records.first.muscle %>kg
         <% end %>
       </th>
       <th class="text-right pr-2">
-        <% if records.map(&:waist).blank? %>
-        <% else %>
+        <% if records.map(&:waist).present? %>
           <%= records.last.waist - records.first.waist %>cm
         <% end %>
       </th>
