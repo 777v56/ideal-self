@@ -7,7 +7,7 @@ class User::RecordsController < ApplicationController
     @record = Record.new
     @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
     from = @month.beginning_of_month.beginning_of_day
-    to = @month.beginning_of_month.beginning_of_day
+    to = @month.end_of_month.end_of_day
     @records = @user.records.where(input_date: from..to).order("input_date ASC")
   end
 
