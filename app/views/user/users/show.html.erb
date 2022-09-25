@@ -4,14 +4,12 @@
       <%= render "user/users/left", user: @user %>
     </div>
     <div class="col-lg-6">
-      <% if @user.name != "guestuser" %>
-        <h4>
-          <strong>
-            <i class="far fa-moon"></i>
-            <%= @user.name %>のつぶやき
-          </strong>
-        </h4>
-      <% end %>
+      <h4>
+        <strong>
+          <i class="far fa-moon"></i>
+          <%= @user.name %>のつぶやき
+        </strong>
+      </h4>
       <%= render "user/mutters/mutter", mutters: @mutters, user: @user %>
         <%= paginate @mutters, theme: "twitter-bootstrap-4" %>
     </div>

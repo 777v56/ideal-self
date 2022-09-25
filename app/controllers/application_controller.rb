@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       user.gender = "不明"
     end
     sign_in user
-    redirect_to mutters_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to user_path(current_user.id), notice: 'ゲストユーザーとしてログインしました。'
   end
 
   def after_sign_out_path_for(resource_or_scope)
