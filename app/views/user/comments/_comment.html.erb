@@ -13,7 +13,7 @@
       <strong><%= comment.comment %></strong><br>
       <p class="text-center">
         <% if comment.comment_image.attached? %>
-          <%= image_tag comment.comment_image, size: "200x200" %>
+          <%= image_tag comment.comment_image, class: "rounded mt-3", width: "80%" %>
         <% end %>
       </p>
       <p class="text-right">

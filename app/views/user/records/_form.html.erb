@@ -1,4 +1,4 @@
-<%= form_with model:@record ,local:true do |f| %>
+<%= form_with model: record, url: records_path, local:true do |f| %>
   <table class="form-table table-borderless mt-5">
     <tr>
       <td class="pr-3 pt-1"><%= f.label :記録日 %></td>
