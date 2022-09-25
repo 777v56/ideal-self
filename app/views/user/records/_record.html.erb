@@ -30,10 +30,30 @@
   <tfoot>
     <tr>
       <th class="text-center">結果</th>
-      <th class="text-right pr-2"><%= records.last.weight - records.first.weight %>kg</th>
-      <th class="text-right pr-2"><%= records.last.fat - records.first.fat %>%</th>
-      <th class="text-right pr-2"><%= records.last.muscle - records.first.muscle %>kg</th>
-      <th class="text-right pr-2"><%= records.last.waist - records.first.waist %>cm</th>
+      <th class="text-right pr-2">
+        <% if records.map(&:weight).blank? %>
+        <% else %>
+          <%= records.last.weight - records.first.weight %>kg
+        <% end %>
+      </th>
+      <th class="text-right pr-2">
+        <% if records.map(&:fat).blank? %>
+        <% else %>
+          <%= records.last.fat - records.first.fat %>%
+        <% end %>
+      </th>
+      <th class="text-right pr-2">
+        <% if records.map(&:muscle).blank? %>
+        <% else %>
+          <%= records.last.muscle - records.first.muscle %>kg
+        <% end %>
+      </th>
+      <th class="text-right pr-2">
+        <% if records.map(&:waist).blank? %>
+        <% else %>
+          <%= records.last.waist - records.first.waist %>cm
+        <% end %>
+      </th>
     </tr>
   </tfoot>
 </table>
