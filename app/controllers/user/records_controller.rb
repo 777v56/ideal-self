@@ -6,7 +6,9 @@ class User::RecordsController < ApplicationController
     @user = User.find(params[:id])
     @record = Record.new
     @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
-    @records = @user.records.where(input_date: @month.all_month).order("input_date ASC")
+    from = @month.beginning_of_month.beginning_of_day
+    to = @month.beginning_of_month.beginning_of_day
+    @records = @user.records.where(input_date: from..to).order("input_date ASC")
   end
 
   def create
