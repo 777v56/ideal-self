@@ -27,7 +27,8 @@
       </tr>
     <% end %>
   </tbody>
-  <% if !record.blank %>
+  <% if record.blank? %>
+  <% else %>
     <tfoot>
       <tr>
         <th class="text-center">結果</th>
