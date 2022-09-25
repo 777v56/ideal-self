@@ -27,5 +27,13 @@
       </tr>
     <% end %>
   </tbody>
-
+  <tfoot>
+    <tr>
+      <th class="text-center"></th>
+      <th class="text-right pr-2"><%= records.last.weight.to_f - records.first.weight.to_f %>kg</th>
+      <th class="text-right pr-2"><%= records.last.fat.to_f - records.first.fat.to_f %>%</th>
+      <th class="text-right pr-2"><%= records.last.muscle.to_f - records.first.muscle.to_f %>kg</th>
+      <th class="text-right pr-2"><%= records.last.waist.to_f - records.first.waist.to_f %>cm</th>
+    </tr>
+  </tfoot>
 </table>
