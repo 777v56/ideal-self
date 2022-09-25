@@ -1,7 +1,7 @@
 <% mutter.comments.each do |comment| %>
-  <div class="box">
+  <div class="mb-4">
     <!--コメント主情報-->
-    <div style="background-color:#fffacd;" class="border-top border-left border-right rounded-top mt-4 p-2">
+    <div style="background-color:#fffacd;" class="border-top border-left border-right rounded-top p-2">
       <%= link_to comment.user, class: "link" do %>
         <%= image_tag comment.user.get_profile_image, class: "rounded-circle mr-2", size:"35x35" %>
         <%= comment.user.name %>
@@ -9,7 +9,7 @@
      </div>
 
     <!--コメント内容・削除-->
-    <div class="border-bottom border-left border-right rounded-bottom p-3 mb-4">
+    <div class="border-bottom border-left border-right rounded-bottom p-3">
       <strong><%= comment.comment %></strong><br>
       <p class="text-center">
         <% if comment.comment_image.attached? %>

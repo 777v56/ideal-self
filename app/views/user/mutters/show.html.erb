@@ -42,18 +42,16 @@
         </div>
 
         <!--コメント機能-->
-        <!--<div class="box">-->
-          <div id="comments-area">
-            <div class="text-right actions">
-              <%= form_with model: [@mutter, @comment], local: false do |f| %>
-                <%= f.text_area :comment, class: "form-control", placeholder: "コメントの内容"%>
-                <%= f.file_field :comment_image, accept: "image/*" %>
-                <%= f.submit "送信", class: "btn btn-sm btn-success" %>
-              <% end %>
-            </div>
-            <%= render "user/comments/comment", mutter: @mutter, comment: @comment %>
+        <div id="comments-area">
+          <div class="mb-5 text-right actions">
+            <%= form_with model: [@mutter, @comment], local: false do |f| %>
+              <%= f.text_area :comment, class: "form-control", placeholder: "コメントの内容"%>
+              <%= f.file_field :comment_image, accept: "image/*" %>
+              <%= f.submit "送信", class: "btn btn-sm btn-success" %>
+            <% end %>
           </div>
-        <!--</div>-->
+          <%= render "user/comments/comment", mutter: @mutter, comment: @comment %>
+        </div>
       </div>
     </div>
     <div class="col-lg-3">

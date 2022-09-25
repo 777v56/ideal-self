@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     registrations: "user/registrations",
     sessions: "user/sessions"
   }
-  devise_for :admin, skip: [:passwords], controllers:{
+  devise_for :admin, skip: [:registrations, :passwords], controllers:{
     sessions: "admin/sessions"
   }
 

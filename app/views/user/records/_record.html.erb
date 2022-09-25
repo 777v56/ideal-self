@@ -13,7 +13,7 @@
       <tr>
         <td>
           <% if record.user == current_user %>
-            <%= link_to edit_record_path(record.id), class:"link" do %>
+            <%= link_to edit_record_path(record.id), class:"link", title: "編集する" do %>
               <%= record.input_date.strftime("%Y/%m/%d") %>
             <% end %>
           <% else %>
