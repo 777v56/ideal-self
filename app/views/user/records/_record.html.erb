@@ -27,15 +27,13 @@
       </tr>
     <% end %>
   </tbody>
-  <% if !records.blank %>
-    <tfoot>
-      <tr>
-        <th class="text-center">結果</th>
-        <th class="text-right pr-2"><%= records.last.weight - records.first.weight %>kg</th>
-        <th class="text-right pr-2"><%= records.last.fat - records.first.fat %>%</th>
-        <th class="text-right pr-2"><%= records.last.muscle - records.first.muscle %>kg</th>
-        <th class="text-right pr-2"><%= records.last.waist - records.first.waist %>cm</th>
-      </tr>
-    </tfoot>
-  <% end %>
+  <tfoot>
+    <tr>
+      <th class="text-center">結果</th>
+      <th class="text-right pr-2"><%= records.last.weight - records.first.weight %>kg</th>
+      <th class="text-right pr-2"><%= records.last.fat - records.first.fat %>%</th>
+      <th class="text-right pr-2"><%= records.last.muscle - records.first.muscle %>kg</th>
+      <th class="text-right pr-2"><%= records.last.waist - records.first.waist %>cm</th>
+    </tr>
+  </tfoot>
 </table>
