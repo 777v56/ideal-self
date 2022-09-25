@@ -8,7 +8,7 @@ class User::SessionsController < Devise::SessionsController
       user.birthday = "20000101"
     end
     sign_in user
-    redirect_to mutters_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to user_path(current_user.id), notice: 'ゲストユーザーとしてログインしました。'
   end
 
   # before_action :configure_sign_in_params, only: [:create]
