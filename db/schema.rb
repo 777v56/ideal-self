@@ -77,11 +77,11 @@ ActiveRecord::Schema.define(version: 2022_09_06_122550) do
 
   create_table "records", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "weight"
-    t.string "fat"
-    t.string "muscle"
-    t.string "waist"
-    t.datetime "input_date", null: false
+    t.float "weight"
+    t.float "fat"
+    t.float "muscle"
+    t.float "waist"
+    t.date "input_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

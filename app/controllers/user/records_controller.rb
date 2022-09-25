@@ -9,6 +9,25 @@ class User::RecordsController < ApplicationController
     from = @month.beginning_of_month.beginning_of_day
     to = @month.end_of_month.end_of_day
     @records = @user.records.where(input_date: from..to).order("input_date ASC")
+    @filter_records = []
+    @records.each_with_index do |record, i|
+      if i == 0
+        next
+      end
+      if record[:weight].blank?
+        record[:weight] = @records[i-1][:weight]
+      end
+      if record[:fat].blank?
+        record[:fat] = @records[i-1][:fat]
+      end
+      if record[:muscle].blank?
+        record[:muscle] = @records[i-1][:muscle]
+      end
+      if record[:waist].blank?
+        record[:waist] = @records[i-1][:waist]
+      end
+     @filter_records.push(record)
+    end
   end
 
   def create
