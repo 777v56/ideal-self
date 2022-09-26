@@ -11,6 +11,7 @@ class User::RecordsController < ApplicationController
     @records = @user.records.where(input_date: from..to).order("input_date ASC")
     @filter_records = []
     @records.each_with_index do |record, i|
+      #byebug
       if i == 0
         next
       end

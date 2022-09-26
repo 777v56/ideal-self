@@ -31,23 +31,23 @@
     <tr>
       <th class="text-center">結果</th>
       <th class="text-right pr-2">
-        <% if records.map(&:weight).present? %>
-          <%= records.last.weight - records.first.weight %>kg
+        <% if records.map(&:weight).any? %>
+          <%= sprintf("%+.1f", records.last.weight - records.map(&:weight).compact.first) %>kg
         <% end %>
       </th>
       <th class="text-right pr-2">
-        <% if records.map(&:fat).present? %>
-          <%= records.last.fat - records.first.fat %>%
+        <% if records.map(&:fat).any? %>
+          <%= sprintf("%+.1f", records.last.fat - records.map(&:fat).compact.first) %>%
         <% end %>
       </th>
       <th class="text-right pr-2">
-        <% if records.map(&:muscle).present? %>
-          <%= records.last.muscle - records.first.muscle %>kg
+        <% if records.map(&:muscle).any? %>
+          <%= sprintf("%+.1f", records.last.muscle - records.map(&:muscle).compact.first) %>kg
         <% end %>
       </th>
       <th class="text-right pr-2">
-        <% if records.map(&:waist).present? %>
-          <%= records.last.waist - records.first.waist %>cm
+        <% if records.map(&:waist).any? %>
+          <%= sprintf("%+.1f", records.last.waist - records.map(&:waist).compact.first) %>cm
         <% end %>
       </th>
     </tr>

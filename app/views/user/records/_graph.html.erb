@@ -6,22 +6,22 @@
         // html_safeで""→&quotに変換されるのを防ぐ
         datasets: [{
             label: "体重",
-            data: <%= records.map(&:weight) %>,
+            data: <%= records.map(&:weight).map(&:to_f) %>,
             borderColor: "tomato",
             backgroundColor: "lightsalmon"
         }, {
             label: "体脂肪率",
-            data: <%= records.map(&:fat) %>,
+            data: <%= records.map(&:fat).map(&:to_f) %>,
             borderColor: "gold",
             backgroundColor: "khaki"
         }, {
             label: "筋肉量",
-            data: <%= records.map(&:muscle) %>,
+            data: <%= records.map(&:muscle).map(&:to_f) %>,
             borderColor: "springgreen",
             backgroundColor: "palegreen"
         }, {
             label: "ウエスト",
-            data: <%= records.map(&:waist) %>,
+            data: <%= records.map(&:waist).map(&:to_f) %>,
             borderColor: "cornflowerblue",
             backgroundColor: "lightskyblue"
         }]
