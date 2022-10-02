@@ -44,6 +44,24 @@
   width: 100%;
 }
 
+.tag-box {
+  margin-left: 10%;
+}
+
+.label {
+  background-color: #a9a9a9;
+  font-weight: 300;
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 65%;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
 @media (max-width: 1115px) {
 	.side {
 	  position: static;

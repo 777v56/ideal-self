@@ -19,6 +19,13 @@
           <p class="text-center">
             <% if @mutter.mutter_image.attached? %>
               <%= image_tag @mutter.mutter_image, class: "rounded mt-3", width: "80%" %>
+              <div class="tag-box">
+                <% @mutter.tags.each do |tag| %>
+                  <span class="label mr-1">
+                    <%= tag.name %>
+                  </span>
+                <% end %>
+              </div>
             <% end %>
           </p>
           <p class="text-right">
