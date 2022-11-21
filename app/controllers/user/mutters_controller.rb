@@ -26,9 +26,11 @@ class User::MuttersController < ApplicationController
     @mutter = Mutter.new(mutter_params)
     @mutter.user_id = current_user.id # user_idの情報はフォームからはきていないので、deviseのメソッドを使って「ログインしている自分のid」を代入
     if @mutter.save
-      tags = Vision.get_image_data(@mutter.mutter_image)
-      tags.each do |tag|
-      @mutter.tags.create(name: tag)
+      if @mutter.mutter_image.attached?
+        tags = Vision.get_image_data(@mutter.mutter_image)
+        tags.each do |tag|
+        @mutter.tags.create(name: tag)
+        end
       end
       flash[:notice] = "投稿しました。"
       redirect_back(fallback_location: user_path(current_user.id))
@@ -47,9 +49,11 @@ class User::MuttersController < ApplicationController
     @mutter = Mutter.find(params[:id])
     @mutter.user_id = current_user.id # user_idの情報はフォームからはきていないので、deviseのメソッドを使って「ログインしている自分のid」を代入
     @mutter.update(mutter_params)
-    tags = Vision.get_image_data(@mutter.mutter_image)
-    tags.each do |tag|
-    @mutter.tags.create(name: tag)
+    if @mutter.mutter_image.attached?
+      tags = Vision.get_image_data(@mutter.mutter_image)
+      tags.each do |tag|
+      @mutter.tags.create(name: tag)
+      end
     end
     redirect_to user_path(current_user.id), notice: "更新しました。"
   end
